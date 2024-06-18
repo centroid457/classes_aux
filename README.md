@@ -1,17 +1,15 @@
-# prj_name (v0.0.0)
+# classes_aux (v0.0.1)
 
 ## DESCRIPTION_SHORT
-descr short (git/prg descr)
+attempt to keep all useful classes and classesTemplates in one place
 
 ## DESCRIPTION_LONG
 designed for ...
 
 
 ## Features
-1. feat1  
-2. feat2:  
-	- block1  
-	- block2  
+1. cmp  
+2. Getattr  
 
 
 ********************************************************************************
@@ -25,13 +23,13 @@ See the [HISTORY.md](HISTORY.md) file for release history.
 
 ## Installation
 ```commandline
-pip install prj-name
+pip install classes-aux
 ```
 
 
 ## Import
 ```python
-from prj_name import *
+from classes_aux import *
 ```
 
 
@@ -41,17 +39,8 @@ See tests and sourcecode for other examples.
 
 ------------------------------
 ### 1. example1.py
-
 ```python
-from classes_aux import *
 
-# =====================================================================================================================
-if __name__ == "__main__":
-	NEW_CLASS____()
-
-# =====================================================================================================================
-
-print(NEW_CLASS____())
 ```
 
 ------------------------------
