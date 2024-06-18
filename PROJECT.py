@@ -45,7 +45,10 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "[CMP] move here from funcs-aux"
+
+
+
+        "[Getattr] move here from reqCheck"
     ]
 
     # FINALIZE -----------------------------------------------
