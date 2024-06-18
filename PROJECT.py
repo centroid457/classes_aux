@@ -14,9 +14,10 @@ class PROJECT:
     AUTHOR_HOMEPAGE: str = "https://github.com/centroid457/"
 
     # PROJECT ----------------------------------------------
-    NAME_IMPORT: str = "prj_name"
+    NAME_IMPORT: str = "classes_aux"
     KEYWORDS: List[str] = [
-        "kw1",
+        "__cmp__",
+        "__getattr__",
     ]
     CLASSIFIERS_TOPICS_ADD: List[str] = [
         # "Topic :: Communications",
@@ -25,18 +26,18 @@ class PROJECT:
 
     # README -----------------------------------------------
     # add DOUBLE SPACE at the end of all lines! for correct representation in MD-viewers
-    DESCRIPTION_SHORT: str = "descr short (git/prg descr)"
+    DESCRIPTION_SHORT: str = "attempt to keep all useful classes and classesTemplates in one place"
     DESCRIPTION_LONG: str = """designed for ..."""
     FEATURES: List[str] = [
         # "feat1",
         # ["feat2", "block1", "block2"],
 
-        "feat1",
-        ["feat2", "block1", "block2"],
+        "cmp",
+        "Getattr",
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 0)
+    VERSION: Tuple[int, int, int] = (0, 0, 1)
     TODO: List[str] = [
         "..."
     ]
@@ -44,7 +45,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "..."
+        "[CMP] move here from funcs-aux"
     ]
 
     # FINALIZE -----------------------------------------------
