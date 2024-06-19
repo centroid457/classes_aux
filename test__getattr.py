@@ -1,3 +1,4 @@
+import re
 import os
 import time
 
@@ -8,6 +9,7 @@ from tempfile import TemporaryDirectory
 from typing import *
 from configparser import ConfigParser
 
+from object_info import *
 from pytest_aux import *
 from classes_aux import *
 
@@ -166,6 +168,19 @@ def test___meth__raise_if(args, _EXPECTED):
 def test___meth__raise_if_not(args, _EXPECTED):
     func_link = Victim().raise_if_not__METH
     pytest_func_tester__no_kwargs(func_link, args, _EXPECTED)
+
+
+# =====================================================================================================================
+def test__comment():
+    COMMENT_APPLYED = "COMMENT_APPLYED"
+    try:
+        Victim().raise_if__METH(True, _comment=COMMENT_APPLYED)
+    except Exx__GetattrPrefix_RaiseIf as exx:
+        print(exx)
+        # ObjectInfo(exx).print()
+        assert COMMENT_APPLYED in str(exx)
+    else:
+        assert False
 
 
 # =====================================================================================================================

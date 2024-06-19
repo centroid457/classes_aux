@@ -62,6 +62,10 @@ class GetattrPrefixInst_RaiseIf(GetattrPrefixInst):
     def raise_if__(self, meth_name: str, args: tuple | None = None, kwargs: dict | None = None, _reverse: bool | None = None) -> None | NoReturn:
         args = args or ()
         kwargs = kwargs or {}
+        _comment = None
+        if "_comment" in kwargs:
+            _comment = kwargs.pop("_comment")
+
         _reverse = _reverse or False
         meth = getattr(self, meth_name)
         if TypeChecker.check__func_or_meth(meth):
@@ -69,7 +73,7 @@ class GetattrPrefixInst_RaiseIf(GetattrPrefixInst):
         else:
             result = meth
         if bool(result) != bool(_reverse):
-            raise self._GETATTR__EXX(f"[raise_if__]met conditions {args=}/{kwargs=}")
+            raise self._GETATTR__EXX(f"[raise_if__]met conditions {meth_name=}/{args=}/{kwargs=}//{_comment=}")
 
     def raise_if_not__(self, meth_name: str, args: tuple | None = None, kwargs: dict | None = None) -> None | NoReturn:
         return self.raise_if__(meth_name=meth_name, args=args, kwargs=kwargs, _reverse=True)

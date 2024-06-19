@@ -37,7 +37,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 2)
+    VERSION: Tuple[int, int, int] = (0, 0, 3)
     TODO: List[str] = [
         "..."
     ]
@@ -45,7 +45,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "[Getattr] create (move here from reqCheck+ref)"
+        "[Getattr/RAISEIF] add _comment"
     ]
 
     # FINALIZE -----------------------------------------------
