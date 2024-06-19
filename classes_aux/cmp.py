@@ -3,7 +3,7 @@ from object_info import *
 
 
 # =====================================================================================================================
-class ClsCmpInst:
+class CmpInst:
     """
     TEMPLATE FOR APPLYING COMPARISON WITH SELF INSTANCE
     """

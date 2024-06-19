@@ -13,7 +13,7 @@ from classes_aux import *
 
 
 # =====================================================================================================================
-class ExampleCmp(ClsCmpInst):
+class ExampleCmp(CmpInst):
     def __init__(self, val):
         self.VAL = val
 

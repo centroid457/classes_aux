@@ -4,15 +4,18 @@ from object_info import *
 
 
 # =====================================================================================================================
-class Exx__GetattrRaiseIf(Exception):
+class Exx__GetattrPrefix(Exception):
+    pass
+
+class Exx__GetattrPrefix_RaiseIf(Exx__GetattrPrefix):
     pass
 
 
 # =====================================================================================================================
-class ClsGetattrInst:
+class GetattrPrefixInst:
     # SETTINGS ----------------------
-    _EXX__GETATTR_RAISE_IF: Type[Exception] = Exx__GetattrRaiseIf
-    _GETATTR_MARKERS__INST: list[str] = ["raise_if__", "raise_if_not__"]
+    _EXX__GETATTR: Type[Exx__GetattrPrefix] = Exx__GetattrPrefix
+    _GETATTR_MARKERS__INST: list[str] = []
 
     def __getattr__(self, item: str):
         meth_name = None
@@ -26,6 +29,19 @@ class ClsGetattrInst:
 
         return lambda *args, **kwargs: getattr(self, marker)(meth_name=meth_name, args=args, kwargs=kwargs)
 
+
+# =====================================================================================================================
+class GetattrPrefixInst_RaiseIf(GetattrPrefixInst):
+    """
+    RULES
+    -----
+    CaseSense
+        1. you should use MARKERS in same register as corresponding methods!
+        2. but apply on instance in any variant!
+    """
+    _EXX__GETATTR = Exx__GetattrPrefix_RaiseIf
+    _GETATTR_MARKERS__INST = ["raise_if__", "raise_if_not__"]
+
     # ---------------------------------------
     # if you need add some new - create same using this as template!
     def raise_if__(self, meth_name: str, args: tuple | None = None, kwargs: dict | None = None, _reverse: bool | None = None) -> None | NoReturn:
@@ -38,7 +54,7 @@ class ClsGetattrInst:
         else:
             result = meth
         if bool(result) != bool(_reverse):
-            raise self._EXX__GETATTR_RAISE_IF(f"[raise_if__]met conditions {args=}/{kwargs=}")
+            raise self._EXX__GETATTR(f"[raise_if__]met conditions {args=}/{kwargs=}")
 
     def raise_if_not__(self, meth_name: str, args: tuple | None = None, kwargs: dict | None = None) -> None | NoReturn:
         return self.raise_if__(meth_name=meth_name, args=args, kwargs=kwargs, _reverse=True)
