@@ -15,20 +15,32 @@ class Exx__GetattrPrefix_RaiseIf(Exx__GetattrPrefix):
 # =====================================================================================================================
 class GetattrPrefixInst:
     # SETTINGS ----------------------
-    _EXX__GETATTR: Type[Exx__GetattrPrefix] = Exx__GetattrPrefix
-    _GETATTR_MARKERS__INST: list[str] = []
+    _GETATTR__EXX: Type[Exx__GetattrPrefix] = Exx__GetattrPrefix
+    _GETATTR__PREFIXES_INST: list[str] = []
+
+    # BASE --------------------------
+    def _attr_name__get_original(self, sample: str | None) -> str | None:
+        """
+        get attr name in original register
+        """
+        if not isinstance(sample, str):
+            return
+        for name in dir(self):
+            if name.lower() == sample.lower():
+                return name
 
     def __getattr__(self, item: str):
-        meth_name = None
-        for marker in self._GETATTR_MARKERS__INST:
-            if item.lower().startswith(marker.lower()):
-                meth_name = item[len(marker):]
-                break
+        for prefix in self._GETATTR__PREFIXES_INST:
+            if item.lower().startswith(prefix.lower()):
+                item = item[len(prefix):]
 
-        if not meth_name or meth_name not in dir(self):
-            raise AttributeError(item)
+                name_original = self._attr_name__get_original(item)
+                if name_original is None:
+                    raise AttributeError(item)
 
-        return lambda *args, **kwargs: getattr(self, marker)(meth_name=meth_name, args=args, kwargs=kwargs)
+                return lambda *args, **kwargs: getattr(self, prefix)(meth_name=name_original, args=args, kwargs=kwargs)
+
+        raise AttributeError(item)
 
 
 # =====================================================================================================================
@@ -36,12 +48,14 @@ class GetattrPrefixInst_RaiseIf(GetattrPrefixInst):
     """
     RULES
     -----
+    You always need to CALL prefixed result! even if you access to not callable attribute!
+
     CaseSense
         1. you should use MARKERS in same register as corresponding methods!
         2. but apply on instance in any variant!
     """
-    _EXX__GETATTR = Exx__GetattrPrefix_RaiseIf
-    _GETATTR_MARKERS__INST = ["raise_if__", "raise_if_not__"]
+    _GETATTR__EXX = Exx__GetattrPrefix_RaiseIf
+    _GETATTR__PREFIXES_INST = ["raise_if__", "raise_if_not__"]
 
     # ---------------------------------------
     # if you need add some new - create same using this as template!
@@ -55,7 +69,7 @@ class GetattrPrefixInst_RaiseIf(GetattrPrefixInst):
         else:
             result = meth
         if bool(result) != bool(_reverse):
-            raise self._EXX__GETATTR(f"[raise_if__]met conditions {args=}/{kwargs=}")
+            raise self._GETATTR__EXX(f"[raise_if__]met conditions {args=}/{kwargs=}")
 
     def raise_if_not__(self, meth_name: str, args: tuple | None = None, kwargs: dict | None = None) -> None | NoReturn:
         return self.raise_if__(meth_name=meth_name, args=args, kwargs=kwargs, _reverse=True)

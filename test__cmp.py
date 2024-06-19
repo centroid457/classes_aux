@@ -13,7 +13,7 @@ from classes_aux import *
 
 
 # =====================================================================================================================
-class ExampleCmp(CmpInst):
+class Victim(CmpInst):
     def __init__(self, val):
         self.VAL = val
 
@@ -41,7 +41,7 @@ class Test__Cmp:
     # @classmethod
     # def setup_class(cls):
     #     pass
-    #     cls.Victim = ExampleCmp
+    #     cls.Victim = Victim
     # @classmethod
     # def teardown_class(cls):
     #     pass
@@ -57,22 +57,22 @@ class Test__Cmp:
         argnames="variant",
         argvalues=[
             # INT ----------------
-            ExampleCmp(1) == 1,
-            ExampleCmp(1) != 11,
+            Victim(1) == 1,
+            Victim(1) != 11,
 
-            ExampleCmp(1) < 2,
-            ExampleCmp(1) <= 2,
-            ExampleCmp(1) <= 1,
+            Victim(1) < 2,
+            Victim(1) <= 2,
+            Victim(1) <= 1,
 
-            ExampleCmp(1) > 0,
-            ExampleCmp(1) >= 0,
-            ExampleCmp(1) >= 1,
+            Victim(1) > 0,
+            Victim(1) >= 0,
+            Victim(1) >= 1,
 
             # STR ----------------
-            ExampleCmp("a") == "a",
-            ExampleCmp("a") == "b",
-            ExampleCmp("a") == 1,
-            ExampleCmp("aa") > 1,
+            Victim("a") == "a",
+            Victim("a") == "b",
+            Victim("a") == 1,
+            Victim("aa") > 1,
         ]
     )
     def test__inst__cmp__eq(self, variant):
