@@ -1,4 +1,4 @@
-# classes_aux (v0.0.1)
+# classes_aux (v0.0.2)
 
 ## DESCRIPTION_SHORT
 attempt to keep all useful classes and classesTemplates in one place
@@ -9,7 +9,7 @@ designed for ...
 
 ## Features
 1. cmp  
-2. Getattr  
+2. getattr prefix  
 
 
 ********************************************************************************

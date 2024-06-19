@@ -33,11 +33,11 @@ class PROJECT:
         # ["feat2", "block1", "block2"],
 
         "cmp",
-        "Getattr",
+        "getattr prefix",
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 1)
+    VERSION: Tuple[int, int, int] = (0, 0, 2)
     TODO: List[str] = [
         "..."
     ]
@@ -45,10 +45,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-
-
-
-        "[Getattr] move here from reqCheck"
+        "[Getattr] create (move here from reqCheck+ref)"
     ]
 
     # FINALIZE -----------------------------------------------

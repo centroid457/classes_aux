@@ -18,7 +18,7 @@ class Victim(GetattrPrefixInst_RaiseIf):
     FALSE = False
     NONE = None
 
-    def meth(self, value: Any):
+    def meth(self, value: Any = None):
         return value
 
 
@@ -131,26 +131,41 @@ def test__attr__static():
 
 
 # =====================================================================================================================
-def test__METH():
-    # TRUE ---------------------
-    assert Victim().TRUE is True
+def test__meth_not_passed():
+    # NOT_PASSED ---------------------
+    assert Victim().meth() is None
+
+    try:
+        Victim().METH()
+    except AttributeError:
+        pass
+    else:
+        assert False
 
 
+@pytest.mark.parametrize(
+    argnames="args, _EXPECTED",
+    argvalues=[
+        (None, None),
+        (True, Exx__GetattrPrefix_RaiseIf),
+        (False, None),
+    ]
+)
+def test___meth__raise_if(args, _EXPECTED):
+    func_link = Victim().raise_if__METH
+    pytest_func_tester__no_kwargs(func_link, args, _EXPECTED)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@pytest.mark.parametrize(
+    argnames="args, _EXPECTED",
+    argvalues=[
+        (None, Exx__GetattrPrefix_RaiseIf),
+        (True, None),
+        (False, Exx__GetattrPrefix_RaiseIf),
+    ]
+)
+def test___meth__raise_if_not(args, _EXPECTED):
+    func_link = Victim().raise_if_not__METH
+    pytest_func_tester__no_kwargs(func_link, args, _EXPECTED)
 
 
 # =====================================================================================================================
