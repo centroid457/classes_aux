@@ -28,4 +28,19 @@ from .cmp import (
     # EXX
 )
 
+from .getattr import (
+    # BASE
+    GetattrPrefixInst,
+    GetattrPrefixInst_RaiseIf,
+
+    # AUX
+
+    # TYPES
+
+    # EXX
+    Exx__GetattrPrefix,
+    Exx__GetattrPrefix_RaiseIf,
+)
+
+
 # =====================================================================================================================

@@ -7,6 +7,7 @@ from object_info import *
 class Exx__GetattrPrefix(Exception):
     pass
 
+
 class Exx__GetattrPrefix_RaiseIf(Exx__GetattrPrefix):
     pass
 
