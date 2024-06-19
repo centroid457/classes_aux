@@ -1,4 +1,4 @@
-# classes_aux (v0.0.2)
+# classes_aux (v0.0.3)
 
 ## DESCRIPTION_SHORT
 attempt to keep all useful classes and classesTemplates in one place
