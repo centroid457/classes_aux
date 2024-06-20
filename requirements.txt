@@ -17,5 +17,6 @@ pytest-aux
 # SPECIAL FOR THIS PROJECT - ROOT --------
 
 # NESTED ---------------------------------
+numpy
 
 # ========================================
