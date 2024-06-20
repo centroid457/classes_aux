@@ -1,3 +1,5 @@
+![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+
 # classes_aux (v0.0.3)
 
 ## DESCRIPTION_SHORT
