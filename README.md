@@ -1,6 +1,7 @@
 ![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 ![example workflow](https://github.com/github/workflows/main.yml/badge.svg?event=push)
 ![example workflow](.github/workflows/tests.yml/badge.svg)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/centroid457/classes_aux)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/centroid457/classes_aux/CI)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/centroid457/classes_aux/CI?label=tests)
 ![example workflow](https://github.com/centroid457/classes_aux/actions/workflows/main.yml/badge.svg)
