@@ -77,7 +77,6 @@ class Test__Cmp:
     )
     def test__inst__cmp__eq(self, variant):
         pytest_func_tester__no_args_kwargs(variant)
-        assert False
 
 
 # =====================================================================================================================
