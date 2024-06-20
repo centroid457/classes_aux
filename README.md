@@ -1,7 +1,6 @@
-![example workflow](https://github.com/centroid457/classes_aux/actions/workflows/tests.yml/badge.svg)
-![example workflow](https://github.com/centroid457/classes_aux/actions/workflows/tests.yml/badge.svg?event=push)
+![GitHub Workflow Status](https://github.com/centroid457/classes_aux/actions/workflows/tests.yml/badge.svg)
 
-# classes_aux (v0.0.3)
+# classes_aux (v0.0.4)
 
 ## DESCRIPTION_SHORT
 attempt to keep all useful classes and classesTemplates in one place
