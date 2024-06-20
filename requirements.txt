@@ -17,6 +17,7 @@ pytest-aux
 # SPECIAL FOR THIS PROJECT - ROOT --------
 
 # NESTED ---------------------------------
+annot_attrs
 numpy
 
 # ========================================
