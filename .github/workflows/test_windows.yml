@@ -7,7 +7,7 @@
 # =====================================================================================================================
 
 
-name: TestsLinux
+name: TestWindows
 
 on: [push, pull_request]
 #on:
@@ -22,7 +22,7 @@ permissions:
 jobs:
   build:
 
-    runs-on: ubuntu-latest  #[ubuntu-20.04, ubuntu-22.04, ubuntu-latest, macOS-latest, windows-latest]
+    runs-on: windows-latest  #[ubuntu-20.04, ubuntu-22.04, ubuntu-latest, macOS-latest, windows-latest]
     timeout-minutes: 10
 
     steps:
@@ -35,7 +35,8 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        if (Test-Path requirements.txt) {pip install -r requirements.txt}   # Win/POWERSHELL
+#        if [ -f requirements.txt ]; then ; fi   # Lin/BASH
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
