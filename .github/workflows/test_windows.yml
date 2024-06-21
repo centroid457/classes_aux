@@ -35,8 +35,12 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest
-        if (Test-Path requirements.txt) {pip install -r requirements.txt}   # Win/POWERSHELL
-#        if [ -f requirements.txt ]; then ; fi   # Lin/BASH
+
+#       Win/POWERSHELL
+        if (Test-Path requirements.txt) {pip install -r requirements.txt}
+#       Lin/BASH
+#        if [ -f requirements.txt ]; then ; fi
+
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
