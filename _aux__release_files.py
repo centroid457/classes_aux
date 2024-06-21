@@ -106,7 +106,9 @@ class ReleaseReadme(ReleaseFileBase):
             # -----------------
             f"![repo/Created](https://img.shields.io/github/created-at/{self.PROJECT.AUTHOR_NICKNAME_GITHUB}/{self.PROJECT.NAME_IMPORT})",
             f"![Commit/Last](https://img.shields.io/github/last-commit/{self.PROJECT.AUTHOR_NICKNAME_GITHUB}/{self.PROJECT.NAME_IMPORT})",
-            f"![Tests/GitHubWorkflowStatus](https://img.shields.io/github/actions/workflow/status/{self.PROJECT.AUTHOR_NICKNAME_GITHUB}/{self.PROJECT.NAME_IMPORT}/tests.yml)  ",
+            # f"![Tests/GitHubWorkflowStatus](https://img.shields.io/github/actions/workflow/status/{self.PROJECT.AUTHOR_NICKNAME_GITHUB}/{self.PROJECT.NAME_IMPORT}/tests.yml)  ",
+            f"![Tests/GitHubWorkflowStatus](https://github.com/{self.PROJECT.AUTHOR_NICKNAME_GITHUB}/{self.PROJECT.NAME_IMPORT}/actions/workflows/tests_linux.yml/badge.svg)  ",
+            f"![Tests/GitHubWorkflowStatus](https://github.com/{self.PROJECT.AUTHOR_NICKNAME_GITHUB}/{self.PROJECT.NAME_IMPORT}/actions/workflows/tests_windows.yml/badge.svg)  ",
 
             # -----------------
             f"![repo/Size](https://img.shields.io/github/repo-size/{self.PROJECT.AUTHOR_NICKNAME_GITHUB}/{self.PROJECT.NAME_IMPORT})",

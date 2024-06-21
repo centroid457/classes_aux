@@ -39,7 +39,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 4)
+    VERSION: Tuple[int, int, int] = (0, 0, 5)
     TODO: List[str] = [
         "..."
     ]
@@ -47,7 +47,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "[CICD] apply tests +add badge in readme"
+        "[BADGES] improve"
     ]
 
     # FINALIZE -----------------------------------------------
