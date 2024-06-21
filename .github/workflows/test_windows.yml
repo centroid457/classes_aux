@@ -20,7 +20,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  job_test_win:
 
     runs-on: windows-latest  #[ubuntu-20.04, ubuntu-22.04, ubuntu-latest, macOS-latest, windows-latest]
     timeout-minutes: 10
