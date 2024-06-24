@@ -39,7 +39,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 5)
+    VERSION: Tuple[int, int, int] = (0, 0, 6)
     TODO: List[str] = [
         "..."
     ]
@@ -47,7 +47,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "[BADGES] improve"
+        "[TESTS] zero separate in folder"
     ]
 
     # FINALIZE -----------------------------------------------
