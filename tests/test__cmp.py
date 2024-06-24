@@ -1,14 +1,10 @@
-import os
-import time
+from typing import *
+import pathlib
 
 import pytest
-import pathlib
-import shutil
-from tempfile import TemporaryDirectory
-from typing import *
-from configparser import ConfigParser
-
+from pytest import mark
 from pytest_aux import *
+
 from classes_aux import *
 
 
