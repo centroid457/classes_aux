@@ -34,6 +34,7 @@ from .getattr import (
     GetattrPrefixInst_RaiseIf,
 
     # AUX
+    GetattrCls_Meta__Template,
 
     # TYPES
 
