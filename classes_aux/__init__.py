@@ -20,28 +20,27 @@
 from .cmp import (
     # BASE
     CmpInst,
-
     # AUX
-
     # TYPES
-
     # EXX
 )
-
 from .getattr import (
     # BASE
     GetattrPrefixInst,
     GetattrPrefixInst_RaiseIf,
-
     # AUX
     GetattrCls_Meta__Template,
-
     # TYPES
-
     # EXX
     Exx__GetattrPrefix,
     Exx__GetattrPrefix_RaiseIf,
 )
-
+from .middle_group import (
+    # BASE
+    ClsMiddleGroup_Base,
+    # AUX
+    # TYPES
+    # EXX
+)
 
 # =====================================================================================================================
