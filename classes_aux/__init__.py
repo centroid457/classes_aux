@@ -37,7 +37,7 @@ from .getattr import (
 )
 from .middle_group import (
     # BASE
-    ClsMiddleGroup_Base,
+    ClsMiddleGroup,
     # AUX
     # TYPES
     # EXX
