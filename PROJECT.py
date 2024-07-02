@@ -36,10 +36,11 @@ class PROJECT:
 
         "cmp",
         "getattr prefix",
+        "middle group",
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 6)
+    VERSION: Tuple[int, int, int] = (0, 0, 7)
     TODO: List[str] = [
         "..."
     ]
@@ -47,7 +48,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "[TESTS] zero separate in folder"
+        "[MiddleGroup] add"
     ]
 
     # FINALIZE -----------------------------------------------
