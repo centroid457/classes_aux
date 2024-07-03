@@ -41,7 +41,7 @@ class ClsMiddleGroup11(ClsMiddleGroup01):
     ]
 )
 def test__check_exists(args, _EXPECTED):
-    func_link = ClsMiddleGroup.middle_group_name__check_exists
+    func_link = ClsMiddleGroup.middle_group__check_exists
     pytest_func_tester__no_kwargs(func_link, args, _EXPECTED)
 
 
@@ -64,7 +64,7 @@ def test__check_exists(args, _EXPECTED):
     ]
 )
 def test__group__name_get(args, _EXPECTED, _MARK):
-    func_link = lambda obj: obj.middle_group_name__get()
+    func_link = lambda obj: obj.middle_group__get()
     pytest_func_tester__no_kwargs(func_link, args, _EXPECTED, _MARK)
 
 
@@ -105,7 +105,7 @@ class Victim11(ClsMiddleGroup11):
     ]
 )
 def test__victim__name_get(obj, _EXPECTED):
-    func_link = lambda: obj.middle_group_name__get()
+    func_link = lambda: obj.middle_group__get()
     pytest_func_tester__no_args_kwargs(func_link, _EXPECTED)
 
 
@@ -128,7 +128,7 @@ def test__victim__name_get(obj, _EXPECTED):
     ]
 )
 def test__victim__check_equal(obj, other, _EXPECTED):
-    func_link = lambda: obj.middle_group_name__check_equal(other)
+    func_link = lambda: obj.middle_group__check_equal(other)
     pytest_func_tester__no_args_kwargs(func_link, _EXPECTED)
 
 

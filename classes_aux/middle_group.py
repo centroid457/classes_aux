@@ -24,21 +24,21 @@ class ClsMiddleGroup:
     MIDDLE_GROUP_NAME: str | None = None  # this is not for comparing! just for short clear name instead of not useful ClsName
 
     @staticmethod
-    def middle_group_name__check_exists(other: Any) -> bool:
-        return hasattr(other, "middle_group_name__get")
+    def middle_group__check_exists(other: Any) -> bool:
+        return hasattr(other, "middle_group__get")
 
     @classmethod
-    def middle_group_name__get(cls) -> str:
+    def middle_group__get(cls) -> str:
         for cls_i in cls.__mro__[1:]:
-            if hasattr(cls_i, "middle_group_name__get"):
+            if hasattr(cls_i, "middle_group__get"):
                 return cls_i.__name__
 
     @classmethod
-    def middle_group_name__check_equal(cls, other: Any) -> bool | None:
-        if not ClsMiddleGroup.middle_group_name__check_exists(other):
+    def middle_group__check_equal(cls, other: Any) -> bool | None:
+        if not ClsMiddleGroup.middle_group__check_exists(other):
             return
 
-        return cls.middle_group_name__get() == other.middle_group_name__get()
+        return cls.middle_group__get() == other.middle_group__get()
 
     # -----------------------------------------------------------------------------------------------------------------
     # EXAMPLE for TCS
