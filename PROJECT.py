@@ -40,7 +40,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 7)
+    VERSION: Tuple[int, int, int] = (0, 0, 8)
     TODO: List[str] = [
         "..."
     ]
@@ -48,7 +48,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "[MiddleGroup] add"
+        "[MiddleGroup] add MIDDLE_GROUP_NAME"
     ]
 
     # FINALIZE -----------------------------------------------

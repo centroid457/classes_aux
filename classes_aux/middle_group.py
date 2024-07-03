@@ -21,6 +21,8 @@ class ClsMiddleGroup:
     there was not enough separating process just by startup_cls and startup_inst!!!
     """
 
+    MIDDLE_GROUP_NAME: str | None = None  # this is not for comparing! just for short clear name instead of not useful ClsName
+
     @staticmethod
     def middle_group_name__check_exists(other: Any) -> bool:
         return hasattr(other, "middle_group_name__get")
