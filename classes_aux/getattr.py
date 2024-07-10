@@ -82,9 +82,22 @@ class GetattrPrefixInst_RaiseIf(GetattrPrefixInst):
 # =====================================================================================================================
 class GetattrCls_Meta__Template(type):
     """
+    NOTE
+    ----
     THIS IS ONLY AS EXAMPLE!!! in any situation you need to create specific Meta-class!!!
 
-    for example usages see requirements_checker.ReqCheckStr_Base, annot_attrs.
+    GOAL
+    ----
+    get attributes from CLASS! not instance!
+
+    CREATED SPECIALLY FOR
+    ---------------------
+    the main goal
+
+    BEST USAGE
+    ----------
+    for example usages see requirements_checker.ReqCheckStr_Base, annot_attrs. or here _GetattrCls_Meta__Echo
+
     """
     # dont change markers! use exists!
     _MARKER__BOOL_IF: str = "bool_if__"
