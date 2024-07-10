@@ -1,7 +1,7 @@
 from typing import *
 from object_info import *
 import math
-
+from classes_aux import CmpInst
 
 # =====================================================================================================================
 TYPE__NUMBER = int | float
@@ -12,7 +12,7 @@ class Exx__NumberArithm_NoName(Exception):
 
 
 # =====================================================================================================================
-class NumberArithmTranslateToAttr:
+class NumberArithmTranslateToAttr(CmpInst):
     """
     GOAL
     ----
@@ -145,6 +145,24 @@ class NumberArithmTranslateToAttr:
     def __ipow__(self, other) -> Self:
         self.NUMBER_ARITHM = self.NUMBER_ARITHM ** float(other)
         return self
+
+    # CMP -------------------------------------------------------------------------------------------------------------
+    def __cmp__(self, other) -> int | NoReturn:
+        """
+        do try to resolve Exceptions!!! sometimes it is ok to get it!!!
+
+        RETURN
+        ------
+            1=self>other
+            0=self==other
+            -1=self<other
+        """
+        if float(self.NUMBER_ARITHM) == float(other) or other == float(self.NUMBER_ARITHM):
+            return 0
+        if float(self.NUMBER_ARITHM) > float(other) or other < float(self.NUMBER_ARITHM):
+            return 1
+        if float(self.NUMBER_ARITHM) < float(other) or other > float(self.NUMBER_ARITHM):
+            return -1
 
 
 # =====================================================================================================================

@@ -33,7 +33,7 @@ class Test__Number:
     #     pass
 
     # -----------------------------------------------------------------------------------------------------------------
-    def test__exprs(self):
+    def test__arithm(self):
         victim = Victim(1)
         # ObjectInfo(victim).print()
         assert victim.VAL == 1
@@ -46,6 +46,9 @@ class Test__Number:
 
         victim = -victim
         assert victim.VAL == -3
+
+    def test__cmp(self):
+        assert Victim(1) == 1
 
 
 # =====================================================================================================================
