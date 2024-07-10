@@ -12,12 +12,12 @@ class Exx__NumberArithm_NoName(Exception):
 
 
 # =====================================================================================================================
-class NumberArithm:
+class NumberArithmTranslateToAttr:
     """
-    TODO: DECIDE
-    ------------
-    return number or reinited object???
-
+    GOAL
+    ----
+    translate all arithmetic functions to exact attribute! always return Self (except direct int/float transform methods).
+    So if you need exact NUMBER - just apply int/float()
     """
     # SETTINGS --------------------------------------------------------------------------------------------------------
     NUMBER_ARITHM__GETATTR_NAME: str = None     # DEFINE!!! name for ORIGINALVALUE
@@ -40,91 +40,111 @@ class NumberArithm:
         setattr(self, self.NUMBER_ARITHM__GETATTR_NAME, other)
 
     # CONVERT ---------------------------------------------------------------------------------------------------------
-    def __int__(self) -> TYPE__NUMBER:
+    def __int__(self) -> int:
         return int(self.NUMBER_ARITHM)
 
-    def __float__(self) -> TYPE__NUMBER:
+    def __float__(self) -> float:
         return float(self.NUMBER_ARITHM)
 
     # SIGN ------------------------------------------------------------------------------------------------------------
-    def __pos__(self) -> TYPE__NUMBER:
+    def __pos__(self) -> Self:
         """
         для унарного плюса (+some_object)
         """
-        return self.NUMBER_ARITHM
+        return self
 
-    def __neg__(self) -> TYPE__NUMBER:
+    def __neg__(self) -> Self:
         """
         для унарного минуса (-some_object)
         """
-        return -self.NUMBER_ARITHM
+        self.NUMBER_ARITHM = - self.NUMBER_ARITHM
+        return self
 
-    def __abs__(self) -> TYPE__NUMBER:
-        # return self.__class__(abs(self.NUMBER_ARITHM))
-        return abs(self.NUMBER_ARITHM)
+    def __abs__(self) -> Self:
+        self.NUMBER_ARITHM = abs(self.NUMBER_ARITHM)
+        return self
 
     # PARTS -----------------------------------------------------------------------------------------------------------
-    def __round__(self, n=None) -> TYPE__NUMBER:
-        return round(self.NUMBER_ARITHM, n)
+    def __round__(self, n=None) -> Self:
+        self.NUMBER_ARITHM = round(self.NUMBER_ARITHM, n)
+        return self
 
-    def __floor__(self) -> TYPE__NUMBER:
-        return math.floor(self.NUMBER_ARITHM)
+    def __floor__(self) -> Self:
+        self.NUMBER_ARITHM = math.floor(self.NUMBER_ARITHM)
+        return self
 
-    def __ceil__(self) -> TYPE__NUMBER:
-        return math.ceil(self.NUMBER_ARITHM)
+    def __ceil__(self) -> Self:
+        self.NUMBER_ARITHM = math.ceil(self.NUMBER_ARITHM)
+        return self
 
-    def __trunc__(self) -> TYPE__NUMBER:
-        return math.trunc(self.NUMBER_ARITHM)
+    def __trunc__(self) -> Self:
+        self.NUMBER_ARITHM = math.trunc(self.NUMBER_ARITHM)
+        return self
 
     # ARITHM ----------------------------------------------------------------------------------------------------------
-    def __add__(self, other) -> TYPE__NUMBER:
-        return self.NUMBER_ARITHM + other
+    def __add__(self, other) -> Self:
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM + float(other)
+        return self
 
-    def __sub__(self, other) -> TYPE__NUMBER:
-        return self.NUMBER_ARITHM - other
+    def __sub__(self, other) -> Self:
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM - float(other)
+        return self
 
-    def __mul__(self, other) -> TYPE__NUMBER:
-        return self.NUMBER_ARITHM * other
+    def __mul__(self, other) -> Self:
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM * float(other)
+        return self
 
-    # def __div__(self, other) -> TYPE__NUMBER:   # THERE IS NO SUCH MAGICMETH!!! use truediv!
+    # def __div__(self, other) -> Self:   # THERE IS NO SUCH MAGICMETH!!! use truediv!
     #     return self.NUMBER_ARITHM/other
+    #     return self
 
-    def __truediv__(self, other) -> TYPE__NUMBER:
-        return self.NUMBER_ARITHM / other
+    def __truediv__(self, other) -> Self:
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM / float(other)
+        return self
 
-    def __floordiv__(self, other) -> TYPE__NUMBER:
-        return self.NUMBER_ARITHM // other
+    def __floordiv__(self, other) -> Self:
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM // float(other)
+        return self
 
-    def __mod__(self, other) -> TYPE__NUMBER:
-        return self.NUMBER_ARITHM % other
+    def __mod__(self, other) -> Self:
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM % float(other)
+        return self
 
     def __divmod__(self, other) -> tuple[int, int | float]:
         return divmod(self.NUMBER_ARITHM, other)
 
-    def __pow__(self, other) -> TYPE__NUMBER:
-        return self.NUMBER_ARITHM ** other
+    def __pow__(self, other) -> Self:
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM ** float(other)
+        return self
 
     # INLINE ----------------------------------------------------------------------------------------------------------
-    def __iadd__(self, other) -> TYPE__NUMBER:
-        return self.NUMBER_ARITHM + other
+    def __iadd__(self, other) -> Self:
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM + float(other)
+        return self
 
-    def __isub__(self, other) -> TYPE__NUMBER:
-        return self.NUMBER_ARITHM - other
+    def __isub__(self, other) -> Self:
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM - float(other)
+        return self
 
-    def __imul__(self, other) -> TYPE__NUMBER:
-        return self.NUMBER_ARITHM * other
+    def __imul__(self, other) -> Self:
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM * float(other)
+        return self
 
-    def __itruediv__(self, other) -> TYPE__NUMBER:
-        return self.NUMBER_ARITHM / other
+    def __itruediv__(self, other) -> Self:
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM / float(other)
+        return self
 
-    def __ifloordiv__(self, other) -> TYPE__NUMBER:
-        return self.NUMBER_ARITHM // other
+    def __ifloordiv__(self, other) -> Self:
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM // float(other)
+        return self
 
-    def __imod__(self, other) -> TYPE__NUMBER:
-        return self.NUMBER_ARITHM % other
+    def __imod__(self, other) -> Self:
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM % float(other)
+        return self
 
-    def __ipow__(self, other) -> TYPE__NUMBER:
-        return self.NUMBER_ARITHM ** other
+    def __ipow__(self, other) -> Self:
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM ** float(other)
+        return self
 
 
 # =====================================================================================================================

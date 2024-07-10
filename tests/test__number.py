@@ -1,4 +1,5 @@
 from typing import *
+from object_info import *
 import pathlib
 
 import pytest
@@ -9,7 +10,7 @@ from classes_aux import *
 
 
 # =====================================================================================================================
-class Victim(NumberArithm):
+class Victim(NumberArithmTranslateToAttr):
     NUMBER_ARITHM__GETATTR_NAME = "VAL"
     def __init__(self, val):
         self.VAL = val
@@ -34,11 +35,17 @@ class Test__Number:
     # -----------------------------------------------------------------------------------------------------------------
     def test__exprs(self):
         victim = Victim(1)
+        # ObjectInfo(victim).print()
+        assert victim.VAL == 1
 
-        assert victim + 1 == 2
+        victim = victim + 1
+        assert victim.VAL == 2
 
         victim += 1
-        assert victim == 2
+        assert victim.VAL == 3
+
+        victim = -victim
+        assert victim.VAL == -3
 
 
 # =====================================================================================================================

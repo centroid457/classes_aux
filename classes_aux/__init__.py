@@ -26,7 +26,7 @@ from .cmp import (
 )
 from .number import (
     # BASE
-    NumberArithm,
+    NumberArithmTranslateToAttr,
     # AUX
     # TYPES
     TYPE__NUMBER,
