@@ -5,7 +5,22 @@ from object_info import *
 # =====================================================================================================================
 class CmpInst:
     """
+    GOAL
+    ----
     TEMPLATE FOR APPLYING COMPARISON WITH SELF INSTANCE
+
+    CREATED SPECIALLY FOR
+    ---------------------
+
+    BEST USAGE
+    ----------
+    just redefine one method __cmp__!
+
+    WHY NOT: JUST USING ONE BY ONE EXACT METHODS?
+    ---------------------------------------------
+    it is more complicated then just one explicit __cmp__()!
+    __cmp__ is not directly acceptable in Python! this is not a buildIn method!
+
     """
     __eq__ = lambda self, other: self.__cmp__(other) == 0
     __ne__ = lambda self, other: self.__cmp__(other) != 0

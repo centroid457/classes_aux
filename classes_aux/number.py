@@ -16,8 +16,20 @@ class NumberArithmTranslateToAttr(CmpInst):
     """
     GOAL
     ----
-    translate all arithmetic functions to exact attribute! always return Self (except direct int/float transform methods).
+    translate all arithmetic operations to exact attribute!
+
+    NOTE
+    ----
+    always return Self for any operation (except direct int/float transform methods).
     So if you need exact NUMBER - just apply int/float()
+
+    CREATED SPECIALLY FOR
+    ---------------------
+    funcs_aux.Value_WithUnit and further ising in Uart Responses
+
+    BEST USAGE
+    ----------
+    see tests!
     """
     # SETTINGS --------------------------------------------------------------------------------------------------------
     NUMBER_ARITHM__GETATTR_NAME: str = None     # DEFINE!!! name for ORIGINALVALUE
