@@ -24,6 +24,15 @@ from .cmp import (
     # TYPES
     # EXX
 )
+from .number import (
+    # BASE
+    NumberArithm,
+    # AUX
+    # TYPES
+    TYPE__NUMBER,
+    # EXX
+    Exx__NumberArithm_NoName,
+)
 from .getattr import (
     # BASE
     GetattrPrefixInst,

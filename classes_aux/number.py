@@ -4,7 +4,7 @@ import math
 
 
 # =====================================================================================================================
-TYPE__NUMBER: int | float
+TYPE__NUMBER = int | float
 
 
 class Exx__NumberArithm_NoName(Exception):
@@ -105,26 +105,26 @@ class NumberArithm:
         return self.NUMBER_ARITHM ** other
 
     # INLINE ----------------------------------------------------------------------------------------------------------
-    def __iadd__(self, other) -> None | NoReturn:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM + other
+    def __iadd__(self, other) -> TYPE__NUMBER:
+        return self.NUMBER_ARITHM + other
 
-    def __isub__(self, other) -> None | NoReturn:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM - other
+    def __isub__(self, other) -> TYPE__NUMBER:
+        return self.NUMBER_ARITHM - other
 
-    def __imul__(self, other) -> None | NoReturn:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM * other
+    def __imul__(self, other) -> TYPE__NUMBER:
+        return self.NUMBER_ARITHM * other
 
-    def __itruediv__(self, other) -> None | NoReturn:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM / other
+    def __itruediv__(self, other) -> TYPE__NUMBER:
+        return self.NUMBER_ARITHM / other
 
-    def __ifloordiv__(self, other) -> None | NoReturn:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM // other
+    def __ifloordiv__(self, other) -> TYPE__NUMBER:
+        return self.NUMBER_ARITHM // other
 
-    def __imod__(self, other) -> None | NoReturn:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM % other
+    def __imod__(self, other) -> TYPE__NUMBER:
+        return self.NUMBER_ARITHM % other
 
-    def __ipow__(self, other) -> None | NoReturn:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM ** other
+    def __ipow__(self, other) -> TYPE__NUMBER:
+        return self.NUMBER_ARITHM ** other
 
 
 # =====================================================================================================================
