@@ -11,6 +11,12 @@
 ********************************************************************************
 ## NEWS
 
+0.1.0 (2024/07/11 10:17:21)
+------------------------------
+- [NumberArithmTranslateToAttr] create  
+- [GetattrEcho] create  
+- [docstr] try to use universal  
+
 0.0.9 (2024/07/03 18:02:52)
 ------------------------------
 - [MiddleGroup] just zero renames  

@@ -9,7 +9,7 @@
 ![Commit/Count/y](https://img.shields.io/github/commit-activity/y/centroid457/classes_aux)
 ![Commit/Count/m](https://img.shields.io/github/commit-activity/m/centroid457/classes_aux)
 
-# classes_aux (current v0.0.9/![Ver/Pypi Latest](https://img.shields.io/pypi/v/classes_aux?label=pypi%20latest))
+# classes_aux (current v0.1.0/![Ver/Pypi Latest](https://img.shields.io/pypi/v/classes_aux?label=pypi%20latest))
 
 ## DESCRIPTION_SHORT
 attempt to keep all useful classes and classesTemplates in one place
@@ -21,7 +21,9 @@ designed for ...
 ## Features
 1. cmp  
 2. getattr prefix  
-3. middle group  
+3. getattr echo  
+4. middle group  
+5. NumberArithm  
 
 
 ********************************************************************************
@@ -51,12 +53,6 @@ See tests and sourcecode for other examples.
 
 ------------------------------
 ### 1. example1.py
-```python
-
-```
-
-------------------------------
-### 2. example2.py
 ```python
 
 ```

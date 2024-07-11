@@ -12,6 +12,7 @@ from classes_aux import *
 # =====================================================================================================================
 class Victim(NumberArithmTranslateToAttr):
     NUMBER_ARITHM__GETATTR_NAME = "VAL"
+
     def __init__(self, val):
         self.VAL = val
 
@@ -50,6 +51,11 @@ class Test__Number:
     def test__cmp(self):
         assert Victim(1) == 1
 
+        assert Victim(0.9) < 1
+        assert Victim(0.9) > -1
+
+        assert Victim(0.9) > 0.8
+        assert Victim(-0.9) < 0.8
+
 
 # =====================================================================================================================
-

@@ -20,6 +20,7 @@ class PROJECT:
     KEYWORDS: List[str] = [
         "__cmp__",
         "__getattr__",
+        "number",
     ]
     CLASSIFIERS_TOPICS_ADD: List[str] = [
         # "Topic :: Communications",
@@ -36,11 +37,13 @@ class PROJECT:
 
         "cmp",
         "getattr prefix",
+        "getattr echo",
         "middle group",
+        "NumberArithm"
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 9)
+    VERSION: Tuple[int, int, int] = (0, 1, 0)
     TODO: List[str] = [
         "..."
     ]
@@ -48,7 +51,9 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "[MiddleGroup] just zero renames"
+        "[NumberArithmTranslateToAttr] create",
+        "[GetattrEcho] create",
+        "[docstr] try to use universal",
     ]
 
     # FINALIZE -----------------------------------------------

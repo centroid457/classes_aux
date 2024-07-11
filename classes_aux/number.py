@@ -3,6 +3,7 @@ from object_info import *
 import math
 from classes_aux import CmpInst
 
+
 # =====================================================================================================================
 TYPE__NUMBER = int | float
 
