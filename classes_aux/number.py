@@ -127,7 +127,7 @@ class NumberArithmTranslateToAttr(CmpInst):
         return self
 
     def __divmod__(self, other) -> tuple[int, int | float]:
-        return divmod(self.NUMBER_ARITHM, other)
+        return divmod(self.NUMBER_ARITHM, float(other))
 
     def __pow__(self, other) -> Self:
         self.NUMBER_ARITHM = self.NUMBER_ARITHM ** float(other)
