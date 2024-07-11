@@ -85,6 +85,10 @@ class NumberArithmTranslateToAttr(CmpInst):
         return bool(self.NUMBER_ARITHM)
 
     def __str__(self) -> str:
+        return self.NUMBER_ARITHM__STR
+
+    @property
+    def NUMBER_ARITHM__STR(self) -> str:
         if int(self.NUMBER_ARITHM) == float(self.NUMBER_ARITHM):
             self.NUMBER_ARITHM = int(self.NUMBER_ARITHM)
             return f"{self.NUMBER_ARITHM}"
