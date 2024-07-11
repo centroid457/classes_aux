@@ -9,7 +9,7 @@
 ![Commit/Count/y](https://img.shields.io/github/commit-activity/y/centroid457/classes_aux)
 ![Commit/Count/m](https://img.shields.io/github/commit-activity/m/centroid457/classes_aux)
 
-# classes_aux (current v0.1.2/![Ver/Pypi Latest](https://img.shields.io/pypi/v/classes_aux?label=pypi%20latest))
+# classes_aux (current v0.1.3/![Ver/Pypi Latest](https://img.shields.io/pypi/v/classes_aux?label=pypi%20latest))
 
 ## DESCRIPTION_SHORT
 attempt to keep all useful classes and classesTemplates in one place
