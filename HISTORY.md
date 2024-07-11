@@ -11,6 +11,10 @@
 ********************************************************************************
 ## NEWS
 
+0.1.2 (2024/07/11 16:26:04)
+------------------------------
+- [NumberArithmTranslateToAttr] add NUMBER_ARITHM__STR  
+
 0.1.1 (2024/07/11 16:10:49)
 ------------------------------
 - [NumberArithmTranslateToAttr] fix STR-representations  
