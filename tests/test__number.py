@@ -60,9 +60,21 @@ class Test__Number:
     def test__precision(self):
         assert Victim(0.001) == 0.001
         assert Victim(0.001) - 0.001 == 0
-        assert Victim(0.001) - 0.0001 == 0.001
-        assert Victim(0.001) + 0.0001 == 0.001
-        assert Victim(0.001) + 0.0005 == 0.002
+        assert round(Victim(0.001) - 0.0001, 3) == 0.001
+        assert round(Victim(0.001) + 0.0001, 3) == 0.001
+        assert round(Victim(0.001) + 0.0005, 3) == 0.002
+
+    def test__str(self):
+        assert str(Victim(1)) == "1"
+        assert str(Victim(1.1)) == "1.1"
+        assert str(Victim(1.1) + 0.1) == "1.2"
+        assert str(Victim(1.111222) + 0.000111222) == "1.111333"
+
+        assert str(Victim(0)) == "0"
+        assert str(Victim(0.0)) == "0"
+
+        assert str(Victim(0.000000111)) == "0"
+        assert str(Victim(0.000002111)) == "0.000002"
 
 
 # =====================================================================================================================

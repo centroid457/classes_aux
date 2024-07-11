@@ -21,7 +21,9 @@ class NumberArithmTranslateToAttr(CmpInst):
 
     NOTE
     ----
-    MAINLY fom the beginning:
+    1. BE CAREFULL to compare FLOATS!!!
+
+    2. MAINLY fom the beginning:
     always return Self for any operation (except direct int/float transform methods).
     So if you need exact NUMBER - just apply float() (int is incorrect!).
 
@@ -43,7 +45,7 @@ class NumberArithmTranslateToAttr(CmpInst):
     """
     # SETTINGS --------------------------------------------------------------------------------------------------------
     NUMBER_ARITHM__GETATTR_NAME: str = None     # DEFINE!!! name for ORIGINALVALUE
-    NUMBER_ARITHM__PRECISION: int = 3
+    # NUMBER_ARITHM__PRECISION: int = 3
 
     # AUX -------------------------------------------------------------------------------------------------------------
     @property
@@ -61,7 +63,10 @@ class NumberArithmTranslateToAttr(CmpInst):
         if not self.NUMBER_ARITHM__GETATTR_NAME:
             raise Exx__NumberArithm_NoName()
 
-        other = round(other, self.NUMBER_ARITHM__PRECISION)
+        if int(self.NUMBER_ARITHM) == float(self.NUMBER_ARITHM):
+            other = int(other)
+
+        # other = round(other, self.NUMBER_ARITHM__PRECISION)
         setattr(self, self.NUMBER_ARITHM__GETATTR_NAME, other)
 
     # CONVERT ---------------------------------------------------------------------------------------------------------
@@ -80,7 +85,11 @@ class NumberArithmTranslateToAttr(CmpInst):
         return bool(self.NUMBER_ARITHM)
 
     def __str__(self) -> str:
-        return str(self.NUMBER_ARITHM)
+        if int(self.NUMBER_ARITHM) == float(self.NUMBER_ARITHM):
+            self.NUMBER_ARITHM = int(self.NUMBER_ARITHM)
+            return f"{self.NUMBER_ARITHM}"
+        else:
+            return f"{self.NUMBER_ARITHM:f}".rstrip("0").rstrip(".")
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.NUMBER_ARITHM})"
