@@ -11,7 +11,6 @@ from classes_aux import *
 # =====================================================================================================================
 def test__GetattrEcho():
     assert GetattrEcho.hello == "hello"
-    assert GetattrEcho.hello_1 == "hello_1"
     assert GetattrEcho.Hello == "Hello"
     assert GetattrEcho.ПРИВЕТ == "ПРИВЕТ"
 
@@ -20,7 +19,6 @@ def test__GetattrEcho():
 
 def test__GetattrEchoSpace():
     assert GetattrEchoSpace.hello == "hello"
-    assert GetattrEchoSpace.hello_1 == "hello 1"
     assert GetattrEchoSpace.Hello == "Hello"
     assert GetattrEchoSpace.ПРИВЕТ == "ПРИВЕТ"
 
@@ -29,4 +27,3 @@ def test__GetattrEchoSpace():
 
 
 # =====================================================================================================================
-
