@@ -30,6 +30,10 @@ class NumberArithmTranslateToAttr(CmpInst):
     BEST USAGE
     ----------
     see tests!
+
+    REFERENCE
+    ---------
+    https://docs.python.org/3/library/operator.html
     """
     # SETTINGS --------------------------------------------------------------------------------------------------------
     NUMBER_ARITHM__GETATTR_NAME: str = None     # DEFINE!!! name for ORIGINALVALUE
