@@ -16,12 +16,17 @@ class NumberArithmTranslateToAttr(CmpInst):
     """
     GOAL
     ----
-    translate all arithmetic operations to exact attribute!
+    translate all arithmetic operations to exact attribute (expected as number)!
 
     NOTE
     ----
+    MAINLY fom the beginning:
     always return Self for any operation (except direct int/float transform methods).
-    So if you need exact NUMBER - just apply int/float()
+    So if you need exact NUMBER - just apply float() (int is incorrect!).
+
+    MAYBE IN FUTURE:
+    IF FUNC - return number, if operation - return Self.
+    I'm not really know what is the best decision but in future it may be changed for real implementation
 
     CREATED SPECIALLY FOR
     ---------------------
