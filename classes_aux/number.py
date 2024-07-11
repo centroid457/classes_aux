@@ -56,11 +56,25 @@ class NumberArithmTranslateToAttr(CmpInst):
         setattr(self, self.NUMBER_ARITHM__GETATTR_NAME, other)
 
     # CONVERT ---------------------------------------------------------------------------------------------------------
+    # MAIN --------------------------------------
     def __int__(self) -> int:
         return int(self.NUMBER_ARITHM)
 
     def __float__(self) -> float:
         return float(self.NUMBER_ARITHM)
+
+    def __hash__(self) -> int:
+        return hash(self.NUMBER_ARITHM)
+
+    # OTHER --------------------------------------
+    def __bool__(self) -> bool:
+        return bool(self.NUMBER_ARITHM)
+
+    def __str__(self) -> str:
+        return str(self.NUMBER_ARITHM)
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self.NUMBER_ARITHM})"
 
     # SIGN ------------------------------------------------------------------------------------------------------------
     def __pos__(self) -> Self:
