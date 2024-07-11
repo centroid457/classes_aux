@@ -43,6 +43,7 @@ class NumberArithmTranslateToAttr(CmpInst):
     ---------
     https://docs.python.org/3/library/operator.html
     """
+
     # SETTINGS --------------------------------------------------------------------------------------------------------
     NUMBER_ARITHM__GETATTR_NAME: str = None     # DEFINE!!! name for ORIGINALVALUE
     # NUMBER_ARITHM__PRECISION: int = 3
@@ -133,17 +134,25 @@ class NumberArithmTranslateToAttr(CmpInst):
         self.NUMBER_ARITHM = math.trunc(self.NUMBER_ARITHM)
         return self
 
+    # OTHER ===========================================================================================================
+    def _other__get_float(self, other: Any) -> float | NoReturn:
+        try:
+            other = self.__class__(other)
+        except:
+            pass
+        return float(other)
+
     # ARITHM ----------------------------------------------------------------------------------------------------------
     def __add__(self, other) -> Self:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM + float(other)
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM + self._other__get_float(other)
         return self
 
     def __sub__(self, other) -> Self:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM - float(other)
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM - self._other__get_float(other)
         return self
 
     def __mul__(self, other) -> Self:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM * float(other)
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM * self._other__get_float(other)
         return self
 
     # def __div__(self, other) -> Self:   # THERE IS NO SUCH MAGICMETH!!! use truediv!
@@ -151,51 +160,51 @@ class NumberArithmTranslateToAttr(CmpInst):
     #     return self
 
     def __truediv__(self, other) -> Self:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM / float(other)
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM / self._other__get_float(other)
         return self
 
     def __floordiv__(self, other) -> Self:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM // float(other)
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM // self._other__get_float(other)
         return self
 
     def __mod__(self, other) -> Self:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM % float(other)
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM % self._other__get_float(other)
         return self
 
     def __divmod__(self, other) -> tuple[int, int | float]:
         return divmod(self.NUMBER_ARITHM, float(other))
 
     def __pow__(self, other) -> Self:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM ** float(other)
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM ** self._other__get_float(other)
         return self
 
     # INLINE ----------------------------------------------------------------------------------------------------------
     def __iadd__(self, other) -> Self:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM + float(other)
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM + self._other__get_float(other)
         return self
 
     def __isub__(self, other) -> Self:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM - float(other)
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM - self._other__get_float(other)
         return self
 
     def __imul__(self, other) -> Self:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM * float(other)
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM * self._other__get_float(other)
         return self
 
     def __itruediv__(self, other) -> Self:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM / float(other)
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM / self._other__get_float(other)
         return self
 
     def __ifloordiv__(self, other) -> Self:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM // float(other)
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM // self._other__get_float(other)
         return self
 
     def __imod__(self, other) -> Self:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM % float(other)
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM % self._other__get_float(other)
         return self
 
     def __ipow__(self, other) -> Self:
-        self.NUMBER_ARITHM = self.NUMBER_ARITHM ** float(other)
+        self.NUMBER_ARITHM = self.NUMBER_ARITHM ** self._other__get_float(other)
         return self
 
     # CMP -------------------------------------------------------------------------------------------------------------
@@ -209,11 +218,11 @@ class NumberArithmTranslateToAttr(CmpInst):
             0=self==other
             -1=self<other
         """
-        if float(self.NUMBER_ARITHM) == float(other) or other == float(self.NUMBER_ARITHM):
+        if float(self.NUMBER_ARITHM) == self._other__get_float(other) or other == float(self.NUMBER_ARITHM):
             return 0
-        if float(self.NUMBER_ARITHM) > float(other) or other < float(self.NUMBER_ARITHM):
+        if float(self.NUMBER_ARITHM) > self._other__get_float(other) or other < float(self.NUMBER_ARITHM):
             return 1
-        if float(self.NUMBER_ARITHM) < float(other) or other > float(self.NUMBER_ARITHM):
+        if float(self.NUMBER_ARITHM) < self._other__get_float(other) or other > float(self.NUMBER_ARITHM):
             return -1
 
 
