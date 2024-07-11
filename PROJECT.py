@@ -43,7 +43,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 1, 0)
+    VERSION: Tuple[int, int, int] = (0, 1, 1)
     TODO: List[str] = [
         "..."
     ]
@@ -51,9 +51,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "[NumberArithmTranslateToAttr] create",
-        "[GetattrEcho] create",
-        "[docstr] try to use universal",
+        "[NumberArithmTranslateToAttr] fix STR-representations",
     ]
 
     # FINALIZE -----------------------------------------------
