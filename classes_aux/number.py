@@ -43,6 +43,7 @@ class NumberArithmTranslateToAttr(CmpInst):
     """
     # SETTINGS --------------------------------------------------------------------------------------------------------
     NUMBER_ARITHM__GETATTR_NAME: str = None     # DEFINE!!! name for ORIGINALVALUE
+    NUMBER_ARITHM__PRECISION: int = 3
 
     # AUX -------------------------------------------------------------------------------------------------------------
     @property
@@ -59,6 +60,8 @@ class NumberArithmTranslateToAttr(CmpInst):
     def NUMBER_ARITHM(self, other) -> None | NoReturn:
         if not self.NUMBER_ARITHM__GETATTR_NAME:
             raise Exx__NumberArithm_NoName()
+
+        other = round(other, self.NUMBER_ARITHM__PRECISION)
         setattr(self, self.NUMBER_ARITHM__GETATTR_NAME, other)
 
     # CONVERT ---------------------------------------------------------------------------------------------------------

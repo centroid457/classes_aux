@@ -57,5 +57,12 @@ class Test__Number:
         assert Victim(0.9) > 0.8
         assert Victim(-0.9) < 0.8
 
+    def test__precision(self):
+        assert Victim(0.001) == 0.001
+        assert Victim(0.001) - 0.001 == 0
+        assert Victim(0.001) - 0.0001 == 0.001
+        assert Victim(0.001) + 0.0001 == 0.001
+        assert Victim(0.001) + 0.0005 == 0.002
+
 
 # =====================================================================================================================
