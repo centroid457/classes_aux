@@ -11,6 +11,10 @@
 ********************************************************************************
 ## NEWS
 
+0.1.4 (2024/07/12 17:38:43)
+------------------------------
+- [NumberArithmTranslateToAttr] add NUMBER_ARITHM__PRECISION  
+
 0.1.3 (2024/07/11 17:18:31)
 ------------------------------
 - [NumberArithmTranslateToAttr] add _other__get_float  

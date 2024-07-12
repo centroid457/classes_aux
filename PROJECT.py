@@ -43,7 +43,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 1, 3)
+    VERSION: Tuple[int, int, int] = (0, 1, 4)
     TODO: List[str] = [
         "..."
     ]
@@ -51,7 +51,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "[NumberArithmTranslateToAttr] add _other__get_float",
+        "[NumberArithmTranslateToAttr] add NUMBER_ARITHM__PRECISION",
     ]
 
     # FINALIZE -----------------------------------------------
