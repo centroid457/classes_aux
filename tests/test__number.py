@@ -18,6 +18,30 @@ class Victim(NumberArithmTranslateToAttr):
 
 
 # =====================================================================================================================
+@pytest.mark.parametrize(
+    argnames="args, _EXPECTED",
+    argvalues=[
+        (Victim(0), "0"),
+        (Victim(0.0), "0"),
+
+        (Victim(1), "1"),
+        (Victim(1.1), "1.1"),
+        (Victim(1.1) + 0.1, "1.2"),
+        (Victim(1.111222) + 0.000111222, "1.111333"),
+
+        (Victim(0.000000111), "0"),
+        (Victim(0.000002111), "0.000002"),
+
+        ((Victim(0.000002111), 6), "0.000002"),
+        ((Victim(0.000002111), 3), "0"),
+    ]
+)
+def test__precision_str(args, _EXPECTED):
+    func_link = NumberArithmTranslateToAttr.float__get_string_no_zeros
+    pytest_func_tester__no_kwargs(func_link, args, _EXPECTED)
+
+
+# =====================================================================================================================
 class Test__Number:
     # @classmethod
     # def setup_class(cls):

@@ -101,7 +101,7 @@ class NumberArithmTranslateToAttr(CmpInst):
     def float__get_string_no_zeros(cls, source: Any, round_n: int | None = None) -> str:
         # int ---------------------
         source = float(source)
-        if round_n is not None:
+        if round_n is None:
             round_n = cls.NUMBER_ARITHM__PRECISION
         if round_n is not None:
             source = round(source, round_n)
