@@ -5,7 +5,6 @@ import pathlib
 import pytest
 from pytest import mark
 from pytest_aux import *
-
 from classes_aux import *
 
 
@@ -37,7 +36,7 @@ class Victim(NumberArithmTranslateToAttr):
     ]
 )
 def test__precision_str(args, _EXPECTED):
-    func_link = NumberArithmTranslateToAttr.float__get_string_no_zeros
+    func_link = NumberArithmTranslateToAttr.number__get_string_no_zeros
     pytest_func_tester__no_kwargs(func_link, args, _EXPECTED)
 
 

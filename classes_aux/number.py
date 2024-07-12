@@ -21,7 +21,7 @@ class NumberArithmTranslateToAttr(CmpInst):
 
     NOTE
     ----
-    1. BE CAREFULL to compare FLOATS!!!
+    1. BE CAREFUL to compare FLOATS!!! it used Precision settings!
 
     2. MAINLY fom the beginning:
     always return Self for any operation (except direct int/float transform methods).
@@ -64,13 +64,37 @@ class NumberArithmTranslateToAttr(CmpInst):
         if not self.NUMBER_ARITHM__GETATTR_NAME:
             raise Exx__NumberArithm_NoName()
 
-        if int(self.NUMBER_ARITHM) == float(self.NUMBER_ARITHM):
-            other = int(other)
-
         if self.NUMBER_ARITHM__PRECISION is not None:
             other = round(other, self.NUMBER_ARITHM__PRECISION)
 
         setattr(self, self.NUMBER_ARITHM__GETATTR_NAME, other)
+
+    # precision --------------------------------------
+    @classmethod
+    def number__fix_precision(cls, source: Any, round_n: int | None = None) -> TYPE__NUMBER:
+        source = float(source)
+        if round_n is None:
+            round_n = cls.NUMBER_ARITHM__PRECISION
+        if round_n is not None:
+            source = round(source, round_n)
+
+        # final -------
+        if int(source) == float(source):
+            source = int(source)
+        return source
+
+    @classmethod
+    def number__get_string_no_zeros(cls, source: Any, round_n: int | None = None) -> str:
+        source = cls.number__fix_precision(source, round_n)
+
+        if int(source) == float(source):
+            source = int(source)
+            result = f"{source}"
+        else:
+            result= f"{source:f}".rstrip("0").rstrip(".")
+
+        # final -------
+        return result
 
     # CONVERT ---------------------------------------------------------------------------------------------------------
     # MAIN --------------------------------------
@@ -95,23 +119,7 @@ class NumberArithmTranslateToAttr(CmpInst):
         return bool(self.NUMBER_ARITHM)
 
     def __str__(self) -> str:
-        return self.float__get_string_no_zeros(self)
-
-    @classmethod
-    def float__get_string_no_zeros(cls, source: Any, round_n: int | None = None) -> str:
-        # int ---------------------
-        source = float(source)
-        if round_n is None:
-            round_n = cls.NUMBER_ARITHM__PRECISION
-        if round_n is not None:
-            source = round(source, round_n)
-        if int(source) == source:
-            source = int(source)
-            result = f"{source}"
-        else:
-            result= f"{source:f}".rstrip("0").rstrip(".")
-        # final
-        return result
+        return self.number__get_string_no_zeros(self)
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.NUMBER_ARITHM})"
