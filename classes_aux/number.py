@@ -97,10 +97,12 @@ class NumberArithmTranslateToAttr(CmpInst):
     def __str__(self) -> str:
         return self.float__get_string_no_zeros(self)
 
-    @staticmethod
-    def float__get_string_no_zeros(source: Any, round_n: int | None = 6) -> str:
+    @classmethod
+    def float__get_string_no_zeros(cls, source: Any, round_n: int | None = None) -> str:
         # int ---------------------
         source = float(source)
+        if round_n is not None:
+            round_n = cls.NUMBER_ARITHM__PRECISION
         if round_n is not None:
             source = round(source, round_n)
         if int(source) == source:
