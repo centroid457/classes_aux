@@ -48,33 +48,54 @@ class Test__Number:
         victim = -victim
         assert victim.VAL == -3
 
-    def test__cmp(self):
-        assert Victim(1) == 1
+    # -----------------------------------------------------------------------------------------------------------------
+    @pytest.mark.parametrize(
+        argnames="expr",
+        argvalues=[
+            (Victim(1) == 1),
+            (Victim(0.9) < 1),
+            (Victim(0.9) > -1),
+            (Victim(0.9) > 0.8),
+            (Victim(-0.9) < 0.8),
+        ]
+    )
+    def test__cmp(self, expr):
+        pytest_func_tester__no_args_kwargs(expr)
 
-        assert Victim(0.9) < 1
-        assert Victim(0.9) > -1
+    # -----------------------------------------------------------------------------------------------------------------
+    @pytest.mark.parametrize(
+        argnames="expr, _EXPECTED",
+        argvalues=[
+            (Victim(0.001), 0.001),
+            (Victim(0.001) - 0.001, 0),
 
-        assert Victim(0.9) > 0.8
-        assert Victim(-0.9) < 0.8
+            (round(Victim(0.001) - 0.0001, 3), 0.001),
+            (round(Victim(0.001) + 0.0001, 3), 0.001),
+            (round(Victim(0.001) + 0.0005, 3), 0.002),
+        ]
+    )
+    def test__precision(self, expr, _EXPECTED):
+        pytest_func_tester__no_args_kwargs(expr, _EXPECTED)
 
-    def test__precision(self):
-        assert Victim(0.001) == 0.001
-        assert Victim(0.001) - 0.001 == 0
-        assert round(Victim(0.001) - 0.0001, 3) == 0.001
-        assert round(Victim(0.001) + 0.0001, 3) == 0.001
-        assert round(Victim(0.001) + 0.0005, 3) == 0.002
+    # -----------------------------------------------------------------------------------------------------------------
+    @pytest.mark.parametrize(
+        argnames="expr, _EXPECTED",
+        argvalues=[
+            (Victim(0), "0"),
+            (Victim(0.0), "0"),
 
-    def test__str(self):
-        assert str(Victim(1)) == "1"
-        assert str(Victim(1.1)) == "1.1"
-        assert str(Victim(1.1) + 0.1) == "1.2"
-        assert str(Victim(1.111222) + 0.000111222) == "1.111333"
+            (Victim(1), "1"),
+            (Victim(1.1), "1.1"),
+            (Victim(1.1) + 0.1, "1.2"),
+            (Victim(1.111222) + 0.000111222, "1.111333"),
 
-        assert str(Victim(0)) == "0"
-        assert str(Victim(0.0)) == "0"
-
-        assert str(Victim(0.000000111)) == "0"
-        assert str(Victim(0.000002111)) == "0.000002"
+            (Victim(0.000000111), "0"),
+            (Victim(0.000002111), "0.000002"),
+        ]
+    )
+    def test__str(self, expr, _EXPECTED):
+        func_link = str(expr)
+        pytest_func_tester__no_args_kwargs(func_link, _EXPECTED)
 
 
 # =====================================================================================================================

@@ -46,7 +46,7 @@ class NumberArithmTranslateToAttr(CmpInst):
 
     # SETTINGS --------------------------------------------------------------------------------------------------------
     NUMBER_ARITHM__GETATTR_NAME: str = None     # DEFINE!!! name for ORIGINALVALUE
-    # NUMBER_ARITHM__PRECISION: int = 3
+    NUMBER_ARITHM__PRECISION: int | None = 6
 
     # AUX -------------------------------------------------------------------------------------------------------------
     @property
@@ -67,12 +67,21 @@ class NumberArithmTranslateToAttr(CmpInst):
         if int(self.NUMBER_ARITHM) == float(self.NUMBER_ARITHM):
             other = int(other)
 
-        # other = round(other, self.NUMBER_ARITHM__PRECISION)
+        if self.NUMBER_ARITHM__PRECISION is not None:
+            other = round(other, self.NUMBER_ARITHM__PRECISION)
+
         setattr(self, self.NUMBER_ARITHM__GETATTR_NAME, other)
 
     # CONVERT ---------------------------------------------------------------------------------------------------------
     # MAIN --------------------------------------
-    def __int__(self) -> int:
+    def __int__(self) -> int | NoReturn:
+        """
+        CAUTION
+        -------
+        BE CAREFUL ABOUT ANY INT!!!
+            int(1.999) == 1!!!!
+        :return:
+        """
         return int(self.NUMBER_ARITHM)
 
     def __float__(self) -> float:
@@ -86,15 +95,21 @@ class NumberArithmTranslateToAttr(CmpInst):
         return bool(self.NUMBER_ARITHM)
 
     def __str__(self) -> str:
-        return self.NUMBER_ARITHM__STR
+        return self.float__get_string_no_zeros(self)
 
-    @property
-    def NUMBER_ARITHM__STR(self) -> str:
-        if int(self.NUMBER_ARITHM) == float(self.NUMBER_ARITHM):
-            self.NUMBER_ARITHM = int(self.NUMBER_ARITHM)
-            return f"{self.NUMBER_ARITHM}"
+    @staticmethod
+    def float__get_string_no_zeros(source: Any, round_n: int | None = 6) -> str:
+        # int ---------------------
+        source = float(source)
+        if round_n is not None:
+            source = round(source, round_n)
+        if int(source) == source:
+            source = int(source)
+            result = f"{source}"
         else:
-            return f"{self.NUMBER_ARITHM:f}".rstrip("0").rstrip(".")
+            result= f"{source:f}".rstrip("0").rstrip(".")
+        # final
+        return result
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.NUMBER_ARITHM})"
