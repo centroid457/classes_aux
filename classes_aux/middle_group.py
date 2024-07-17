@@ -18,7 +18,7 @@ class ClsMiddleGroup:
     ---------------------
     module testplans.
     need to handle testcase classes as some groups!
-    there was not enough separating process just by startup_cls and startup_inst!!!
+    there was not enough separating process just by startup_cls and startup_inst!!! need startup_group!
     """
 
     MIDDLE_GROUP_NAME: str | None = None  # this is not for comparing! just for short clear name instead of not useful ClsName
