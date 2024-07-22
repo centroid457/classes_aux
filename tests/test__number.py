@@ -1,7 +1,5 @@
 from typing import *
 from object_info import *
-import pathlib
-
 import pytest
 from pytest import mark
 from pytest_aux import *
@@ -37,6 +35,33 @@ class Victim(NumberArithmTranslateToAttr):
 )
 def test__precision_str(args, _EXPECTED):
     func_link = NumberArithmTranslateToAttr.number__get_string_no_zeros
+    pytest_func_tester__no_kwargs(func_link, args, _EXPECTED)
+
+
+# =====================================================================================================================
+@pytest.mark.parametrize(
+    argnames="args, _EXPECTED",
+    argvalues=[
+        (0, 0),
+        (1, 1),
+        (1.0, 1),
+        (1.1, 1.1),
+        (None, None),
+        ("1.0", 1),
+        ("0001.0", 1),
+        ("1.1", "1.1"),
+
+        (Victim(0), 0),
+        (Victim(0.0), 0),
+
+        (Victim(1), 1),
+        (Victim(1.1), 1.1),
+
+        (Victim(0.000000111), 0.000000111),
+    ]
+)
+def test__precision_str(args, _EXPECTED):
+    func_link = NumberArithmTranslateToAttr.number__try_int_if_same
     pytest_func_tester__no_kwargs(func_link, args, _EXPECTED)
 
 

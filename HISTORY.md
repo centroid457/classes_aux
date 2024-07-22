@@ -11,6 +11,10 @@
 ********************************************************************************
 ## NEWS
 
+0.1.5 (2024/07/22 14:30:28)
+------------------------------
+- [NumberArithmTranslateToAttr] separate and fix number__try_int_if_same  
+
 0.1.4 (2024/07/12 17:38:43)
 ------------------------------
 - [NumberArithmTranslateToAttr] add NUMBER_ARITHM__PRECISION  

@@ -79,16 +79,41 @@ class NumberArithmTranslateToAttr(CmpInst):
             source = round(source, round_n)
 
         # final -------
-        if int(source) == float(source):
-            source = int(source)
+        source = cls.number__try_int_if_same(source)
+        return source
+
+    @classmethod
+    def number__try_int_if_same(cls, source: Any) -> int | Any:
+        """
+        GOAL
+        ----
+        get int value if int()==float()
+
+        USEFUL IDEAS
+        ------------
+        1. keep short value in str() when we have float value with insignificant zeros (like 1.0)
+        2. correct comparing int with float
+            assert 1 != 1.0
+            assert int(1) == int(1.0)
+        3. fix correct comparing strings
+            assert int("1.0") == 1  # will get EXX!!!
+            assert number__try_int_if_same("1.0") == 1  # will get True
+
+        Created specially for
+        ---------------------
+        NumberArithm class
+        """
+        try:
+            if int(float(source)) == float(source):
+                source = int(float(source))
+        except:
+            pass
         return source
 
     @classmethod
     def number__get_string_no_zeros(cls, source: Any, round_n: int | None = None) -> str:
         source = cls.number__fix_precision(source, round_n)
-
-        if int(source) == float(source):
-            source = int(source)
+        if isinstance(source, int):
             result = f"{source}"
         else:
             result= f"{source:f}".rstrip("0").rstrip(".")

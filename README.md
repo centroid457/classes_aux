@@ -9,7 +9,7 @@
 ![Commit/Count/y](https://img.shields.io/github/commit-activity/y/centroid457/classes_aux)
 ![Commit/Count/m](https://img.shields.io/github/commit-activity/m/centroid457/classes_aux)
 
-# classes_aux (current v0.1.4/![Ver/Pypi Latest](https://img.shields.io/pypi/v/classes_aux?label=pypi%20latest))
+# classes_aux (current v0.1.5/![Ver/Pypi Latest](https://img.shields.io/pypi/v/classes_aux?label=pypi%20latest))
 
 ## DESCRIPTION_SHORT
 attempt to keep all useful classes and classesTemplates in one place
@@ -49,7 +49,7 @@ from classes_aux import *
 
 ********************************************************************************
 ## USAGE EXAMPLES
-See tests and sourcecode for other examples.
+See tests, sourcecode and docstrings for other examples.  
 
 ------------------------------
 ### 1. example1.py
