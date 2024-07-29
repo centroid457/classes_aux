@@ -33,7 +33,7 @@ class NumberArithmTranslateToAttr(CmpInst):
 
     CREATED SPECIALLY FOR
     ---------------------
-    funcs_aux.Value_WithUnit and further ising in Uart Responses
+    funcs_aux.ValueUnit and further ising in Uart Responses
 
     BEST USAGE
     ----------
