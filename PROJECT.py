@@ -63,7 +63,7 @@ class PROJECT(PROJECT_BASE):
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 1, 5)
+    VERSION: Tuple[int, int, int] = (0, 1, 6)
     TODO: List[str] = [
         "..."
     ]
@@ -71,7 +71,7 @@ class PROJECT(PROJECT_BASE):
         "..."
     ]
     NEWS: List[str] = [
-        "[NumberArithmTranslateToAttr] separate and fix number__try_int_if_same",
+        "[CmpInst] add meth l*g*",
     ]
 
 
