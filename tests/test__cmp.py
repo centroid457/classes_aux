@@ -50,7 +50,7 @@ class Test__Cmp:
 
     # -----------------------------------------------------------------------------------------------------------------
     @pytest.mark.parametrize(
-        argnames="variant",
+        argnames="expr",
         argvalues=[
             # INT ----------------
             Victim(1) == 1,
@@ -71,8 +71,40 @@ class Test__Cmp:
             Victim("aa") > 1,
         ]
     )
-    def test__inst__cmp__eq(self, variant):
-        pytest_func_tester__no_args_kwargs(variant)
+    def test__inst__cmp__eq(self, expr):
+        pytest_func_tester__no_args_kwargs(expr)
+
+    # -----------------------------------------------------------------------------------------------------------------
+    @pytest.mark.parametrize(
+        argnames="expr, _EXPECTED",
+        argvalues=[
+            (Victim(0).ltgt(1, 3), False),
+            (Victim(1).ltgt(1, 3), False),
+            (Victim(2).ltgt(1, 3), True),
+            (Victim(3).ltgt(1, 3), False),
+            (Victim(4).ltgt(1, 3), False),
+
+            (Victim(0).ltge(1, 3), False),
+            (Victim(1).ltge(1, 3), False),
+            (Victim(2).ltge(1, 3), True),
+            (Victim(3).ltge(1, 3), True),
+            (Victim(4).ltge(1, 3), False),
+
+            (Victim(0).legt(1, 3), False),
+            (Victim(1).legt(1, 3), True),
+            (Victim(2).legt(1, 3), True),
+            (Victim(3).legt(1, 3), False),
+            (Victim(4).legt(1, 3), False),
+
+            (Victim(0).lege(1, 3), False),
+            (Victim(1).lege(1, 3), True),
+            (Victim(2).lege(1, 3), True),
+            (Victim(3).lege(1, 3), True),
+            (Victim(4).lege(1, 3), False),
+        ]
+    )
+    def test__inst__cmp__lg(self, expr, _EXPECTED):
+        pytest_func_tester__no_args_kwargs(expr, _EXPECTED)
 
 
 # =====================================================================================================================

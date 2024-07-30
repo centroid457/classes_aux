@@ -24,10 +24,17 @@ class CmpInst:
     """
     __eq__ = lambda self, other: self.__cmp__(other) == 0
     __ne__ = lambda self, other: self.__cmp__(other) != 0
+
     __lt__ = lambda self, other: self.__cmp__(other) < 0
     __gt__ = lambda self, other: self.__cmp__(other) > 0
     __le__ = lambda self, other: self.__cmp__(other) <= 0
     __ge__ = lambda self, other: self.__cmp__(other) >= 0
+
+    ltgt = lambda self, other1, other2: self > other1 and self < other2
+    ltge = lambda self, other1, other2: self > other1 and self <= other2
+
+    legt = lambda self, other1, other2: self >= other1 and self < other2
+    lege = lambda self, other1, other2: self >= other1 and self <= other2
 
     # CMP -------------------------------------------------------------------------------------------------------------
     def __cmp__(self, other) -> int | NoReturn:
