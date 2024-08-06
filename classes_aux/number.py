@@ -55,7 +55,7 @@ class NumberArithmTranslateToAttr(CmpInst):
             raise Exx__NumberArithm_NoName()
 
         result = getattr(self, self.NUMBER_ARITHM__GETATTR_NAME)
-        if TypeChecker.check__func_or_meth(result):
+        if TypeChecker.check__callable_func_meth_inst(result):
             result = result()
         return result
 

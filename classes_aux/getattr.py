@@ -68,7 +68,7 @@ class GetattrPrefixInst_RaiseIf(GetattrPrefixInst):
 
         _reverse = _reverse or False
         meth = getattr(self, meth_name)
-        if TypeChecker.check__func_or_meth(meth):
+        if TypeChecker.check__callable_func_meth_inst(meth):
             result = meth(*args, **kwargs)
         else:
             result = meth

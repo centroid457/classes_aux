@@ -41,7 +41,7 @@ class PROJECT_BASE:
 class PROJECT(PROJECT_BASE):
     # PROJECT ----------------------------------------------
     NAME_IMPORT: str = "classes_aux"
-    KEYWORDS: List[str] = [
+    KEYWORDS: list[str] = [
         "__cmp__",
         "__getattr__",
         "number",
@@ -51,7 +51,7 @@ class PROJECT(PROJECT_BASE):
     # add DOUBLE SPACE at the end of all lines! for correct representation in MD-viewers
     DESCRIPTION_SHORT: str = "attempt to keep all useful classes and classesTemplates in one place"
     DESCRIPTION_LONG: str = """designed for ..."""
-    FEATURES: List[str] = [
+    FEATURES: list[str] = [
         # "feat1",
         # ["feat2", "block1", "block2"],
 
@@ -63,15 +63,15 @@ class PROJECT(PROJECT_BASE):
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 1, 6)
-    TODO: List[str] = [
+    VERSION: tuple[int, int, int] = (0, 1, 7)
+    TODO: list[str] = [
         "..."
     ]
-    FIXME: List[str] = [
+    FIXME: list[str] = [
         "..."
     ]
-    NEWS: List[str] = [
-        "[CmpInst] add meth l*g*",
+    NEWS: list[str] = [
+        "ready v0.1.7=zero rename for new versions",
     ]
 
 
