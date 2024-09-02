@@ -1,3 +1,5 @@
+# FIXME: need to deprecate! see next
+
 from typing import *
 from object_info import *
 from funcs_aux import *
@@ -6,6 +8,9 @@ from funcs_aux import *
 # =====================================================================================================================
 class ClsMiddleGroup:
     """
+    # FIXME: need to deprecate!
+        consider to compare direct methods
+
     GOAL
     ----
     if you need to separate cls/inst into several groups by middle nested class.
