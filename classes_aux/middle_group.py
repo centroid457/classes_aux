@@ -8,8 +8,22 @@ from funcs_aux import *
 # =====================================================================================================================
 class ClsMiddleGroup:
     """
-    # FIXME: need to deprecate!
-        consider to compare direct methods
+    NOTE: DONT to deprecate!
+    ------------------------
+    comparing direct methods on objects will not work!!!
+        class Cls:
+            def meth(self):
+                pass
+            @classmethod
+            def cmeth(cls):
+                pass
+
+            class Cls2(Cls):
+                pass
+
+            print(Cls.meth == Cls2.meth)        # True
+            print(Cls().meth == Cls2().meth)    # false
+            print(Cls().cmeth == Cls2().cmeth)  # false
 
     GOAL
     ----
@@ -19,7 +33,7 @@ class ClsMiddleGroup:
     USAGE
     -----
     1. create some middle classes which will define groups.
-    2. apply group methods and mention it in MIDDLE_GROUP__CMP_METH so objects could be compared not just by names!
+    2. apply group methods and mention it in MIDDLE_GROUP__CMP_ATTR so objects could be compared not just by names!
     3. do nesting your final classes by Groups
 
         # BEFORE --------------------------
@@ -67,7 +81,7 @@ class ClsMiddleGroup:
 
     TWO WAYS TO SEPARATE GROUPS
     NOTE: BEST WAY: use only *_CMP_METH! *_NAME useful for issues when you need to know exactly the group name!
-    but you could forget using MIDDLE_GROUP__CMP_METH and exists incorrect cases.
+    but you could forget using MIDDLE_GROUP__CMP_ATTR and exists incorrect cases.
 
     1. NAME/str attribute as base (always checks first) - MIDDLE_GROUP__NAME
         class Group1(ClsMiddleGroup):
@@ -80,7 +94,7 @@ class ClsMiddleGroup:
             def meth(self):
                 return True
 
-    2. by other methods in addition - MIDDLE_GROUP__CMP_METH
+    2. by other methods in addition - MIDDLE_GROUP__CMP_ATTR
         class GroupBase(ClsMiddleGroup):
             MIDDLE_GROUP__METH_CMP = "meth"
             MIDDLE_GROUP__METH_CMP = ["meth", "meth2"]
@@ -100,7 +114,7 @@ class ClsMiddleGroup:
     there was not enough separating process just by startup_cls and startup_inst!!! need startup_group!
     """
     MIDDLE_GROUP__NAME: None | str = None           # main cmp meth
-    MIDDLE_GROUP__CMP_METH: TYPE__ARGS = None       # additional cmp methods
+    MIDDLE_GROUP__CMP_ATTR: TYPE__ARGS = None       # additional cmp methods
 
     @classmethod
     def middle_group__check_equal(cls, other: Any) -> bool | None:
@@ -110,44 +124,32 @@ class ClsMiddleGroup:
         if not TypeChecker.check__nested__by_cls_or_inst(other, ClsMiddleGroup):
             return
 
+        other = ensure_class(other)
+
         # CMP not only by just one name!!! need cmp by equity special methods!
-        result = cls.MIDDLE_GROUP__NAME == other.MIDDLE_GROUP__NAME
-        if not result:
+        if cls.MIDDLE_GROUP__NAME != other.MIDDLE_GROUP__NAME:
             return False
 
-        if cls.MIDDLE_GROUP__CMP_METH or other.MIDDLE_GROUP__CMP_METH:
-            # collect ------------------
-            meths_cmp = []
-            if cls.MIDDLE_GROUP__CMP_METH:
-                meths_cmp1 = args__ensure_tuple(cls.MIDDLE_GROUP__CMP_METH)
-                if meths_cmp1:
-                    meths_cmp.extend(meths_cmp1)
+        attrs = []
+        if cls.MIDDLE_GROUP__CMP_ATTR:
+            attrs1 = args__ensure_tuple(cls.MIDDLE_GROUP__CMP_ATTR)
+            attrs.extend(attrs1)
 
-            if other.MIDDLE_GROUP__CMP_METH:
-                meths_cmp2 = args__ensure_tuple(other.MIDDLE_GROUP__CMP_METH)
-                if meths_cmp2:
-                    meths_cmp.extend(meths_cmp2)
+        if other.MIDDLE_GROUP__CMP_ATTR:
+            attrs2 = args__ensure_tuple(other.MIDDLE_GROUP__CMP_ATTR)
+            attrs.extend(attrs2)
 
-            # cmp ------------------
-            other = ensure_class(other)
-
-            for meth_name in meths_cmp:
-                hasattr1 = hasattr(cls, meth_name)
-                hasattr2 = hasattr(other, meth_name)
-                if not hasattr1 and not hasattr2:
-                    continue
-
-                try:
-                    getattr1 = getattr(cls, meth_name)
-                    getattr2 = getattr(other, meth_name)
-                    result &= getattr1 == getattr2
-                except:
-                    result = False
-
-                if not result:
+        # cmp ------------------
+        for attr in attrs:
+            try:
+                getattr1 = getattr(cls, attr, None)
+                getattr2 = getattr(other, attr, None)
+                if getattr1 != getattr2:
                     return False
+            except:
+                return False
 
-        return result
+        return True
 
     # -----------------------------------------------------------------------------------------------------------------
     # EXAMPLE for TCS
