@@ -10,13 +10,14 @@ class ClsMiddleGroup:
     """
     NOTE: DONT to deprecate!
     ------------------------
-    comparing direct methods on objects will not work!!!
-        class Cls:
-            def meth(self):
-                pass
-            @classmethod
-            def cmeth(cls):
-                pass
+    1. comparing direct methods on objects will not work!!!
+        -------------------------
+            class Cls:
+                def meth(self):
+                    pass
+                @classmethod
+                def cmeth(cls):
+                    pass
 
             class Cls2(Cls):
                 pass
@@ -24,6 +25,40 @@ class ClsMiddleGroup:
             print(Cls.meth == Cls2.meth)        # True
             print(Cls().meth == Cls2().meth)    # false
             print(Cls().cmeth == Cls2().cmeth)  # false
+        -------------------------
+
+    2. and even cmp classes - will not work!
+        -------------------------
+            class Cls:
+                def meth(self):
+                    pass
+                @classmethod
+                def cmeth(cls):
+                    pass
+
+            class Cls2(Cls):
+                pass
+
+            print(Cls.meth is Cls2.meth)
+            print(Cls.meth == Cls2.meth)
+            print(Cls.cmeth is Cls2.cmeth)
+            print(Cls.cmeth == Cls2.cmeth)
+
+            print(Cls.meth)
+            print(Cls2.meth)
+            print(Cls.cmeth)
+            print(Cls2.cmeth)
+
+            #
+            True
+            True
+            False
+            False
+            <function Cls.meth at 0x000002CC6B525940>
+            <function Cls.meth at 0x000002CC6B525940>
+            <bound method Cls.cmeth of <class '__main__.Cls'>>
+            <bound method Cls.cmeth of <class '__main__.Cls2'>>
+        -------------------------
 
     GOAL
     ----
@@ -114,10 +149,10 @@ class ClsMiddleGroup:
     there was not enough separating process just by startup_cls and startup_inst!!! need startup_group!
     """
     MIDDLE_GROUP__NAME: None | str = None           # main cmp meth
-    MIDDLE_GROUP__CMP_ATTR: TYPE__ARGS = None       # additional cmp methods
+    MIDDLE_GROUP__CMP_ATTR: TYPE__ARGS = None       # additional cmp parameters
 
     @classmethod
-    def middle_group__check_equal(cls, other: Any) -> bool | None:
+    def middle_group__check_equal__cls(cls, other: Any) -> bool | None:
         """
         middle groups could be cmp only by this method!
         """
@@ -150,6 +185,9 @@ class ClsMiddleGroup:
                 return False
 
         return True
+
+    def middle_group__check_equal__inst(self, other: Any) -> bool | None:
+        pass
 
     # -----------------------------------------------------------------------------------------------------------------
     # EXAMPLE for TCS
