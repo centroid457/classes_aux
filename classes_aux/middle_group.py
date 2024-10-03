@@ -8,7 +8,7 @@ from funcs_aux import *
 # =====================================================================================================================
 class ClsMiddleGroup:
     """
-    NOTE: DONT to deprecate!
+    NOTE1: DONT deprecate! Cant compare methods even classmethods - compare only attrs!
     ------------------------
     1. comparing direct methods on objects will not work!!!
         -------------------------
@@ -60,6 +60,21 @@ class ClsMiddleGroup:
             <bound method Cls.cmeth of <class '__main__.Cls2'>>
         -------------------------
 
+    NOTE2: under your own responsibility
+    ------------------------------------
+    you need keep separating groups by yourself!
+
+    CREATED SPECIALLY FOR
+    ---------------------
+    module testplans
+    need to handle testcase classes as some groups!
+    there was not enough separating process just by startup_cls and startup_inst!!! need startup_group!
+
+
+
+
+    further info may be old and incorrect!
+    ======================================
     GOAL
     ----
     if you need to separate cls/inst into several groups by middle nested class.
@@ -115,7 +130,7 @@ class ClsMiddleGroup:
 
 
     TWO WAYS TO SEPARATE GROUPS
-    NOTE: BEST WAY: use only *_CMP_METH! *_NAME useful for issues when you need to know exactly the group name!
+    NOTE: BEST WAY: use only MIDDLE_GROUP__CMP_ATTR and *_NAME useful for issues when you need to know exactly the group name!
     but you could forget using MIDDLE_GROUP__CMP_ATTR and exists incorrect cases.
 
     1. NAME/str attribute as base (always checks first) - MIDDLE_GROUP__NAME
@@ -131,8 +146,8 @@ class ClsMiddleGroup:
 
     2. by other methods in addition - MIDDLE_GROUP__CMP_ATTR
         class GroupBase(ClsMiddleGroup):
-            MIDDLE_GROUP__METH_CMP = "meth"
-            MIDDLE_GROUP__METH_CMP = ["meth", "meth2"]
+            MIDDLE_GROUP__CMP_ATTR = "meth"
+            MIDDLE_GROUP__CMP_ATTR = ["meth", "meth2"]
 
         class Group1(GroupBase):
             def meth(self):
@@ -141,12 +156,6 @@ class ClsMiddleGroup:
         class Group2(GroupBase):
             def meth(self):
                 return True
-
-    CREATED SPECIALLY FOR
-    ---------------------
-    module testplans.
-    need to handle testcase classes as some groups!
-    there was not enough separating process just by startup_cls and startup_inst!!! need startup_group!
     """
     MIDDLE_GROUP__NAME: None | str = None           # main cmp meth
     MIDDLE_GROUP__CMP_ATTR: TYPE__ARGS = None       # additional cmp parameters
@@ -187,6 +196,9 @@ class ClsMiddleGroup:
         return True
 
     def middle_group__check_equal__inst(self, other: Any) -> bool | None:
+        """
+        NOT REALIZED YET! and maybe not available!
+        """
         pass
 
     # -----------------------------------------------------------------------------------------------------------------

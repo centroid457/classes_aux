@@ -22,6 +22,7 @@ class Victim2(ClsMiddleGroup):
 class VictimAttr1(ClsMiddleGroup):
     attr = 1
 
+
 class VictimAttr1Cmp(VictimAttr1):
     MIDDLE_GROUP__CMP_ATTR = "attr"
 
@@ -62,7 +63,7 @@ class VictimAttr1CmpAttr2_TryBreak(VictimAttr1CmpAttr2):
         (VictimAttr1CmpAttr2_TryBreak, VictimAttr1CmpAttr2, True),
     ]
 )
-def test__victim__check_equal(obj, other, _EXPECTED):
+def test__victim__check_equal__cls(obj, other, _EXPECTED):
     func_link = lambda: obj.middle_group__check_equal__cls(other)
     pytest_func_tester__no_args_kwargs(func_link, _EXPECTED)
 
