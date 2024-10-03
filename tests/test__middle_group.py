@@ -46,13 +46,13 @@ class VictimAttr1CmpAttr2_TryBreak(VictimAttr1CmpAttr2):
         (Victim, bool, None),
         (Victim(), bool, None),
 
-        (Victim, Victim, True),
-        (Victim, Victim(), True),
+        (Victim, Victim, False),
+        (Victim, Victim(), False),
         (Victim, Victim1, False),
         (Victim, Victim1(), False),
 
         # VictimAttr1
-        (Victim, VictimAttr1, True),
+        (Victim, VictimAttr1, False),
         (Victim, VictimAttr1Cmp, False),
 
         (VictimAttr1, VictimAttr1CmpAttr2, False),

@@ -70,6 +70,32 @@ class ClsMiddleGroup:
     need to handle testcase classes as some groups!
     there was not enough separating process just by startup_cls and startup_inst!!! need startup_group!
 
+    THERE ARE THREE WAYS TO SEPARATE GROUPS
+    ---------------------------------------
+    1. ONLY NAME
+    str attribute as base (always checks first) - MIDDLE_GROUP__NAME
+        class Group1(ClsMiddleGroup):
+            MIDDLE_GROUP__NAME = "Group1"
+
+        class Group2(ClsMiddleGroup):
+            MIDDLE_GROUP__NAME = "Group2"
+
+    2. ONLY ATTR VALUES - MIDDLE_GROUP__CMP_ATTR
+        class GroupBase(ClsMiddleGroup):
+            MIDDLE_GROUP__CMP_ATTR = "meth"
+            MIDDLE_GROUP__CMP_ATTR = ["attr", "attr2"]
+
+        class Group1(GroupBase):
+            attr = 1
+
+        class Group2(GroupBase):
+            attr = 2
+
+
+    3. BOTH NAME/ATTRS
+
+
+
 
 
 
@@ -127,35 +153,6 @@ class ClsMiddleGroup:
 
         class Cls3(Group2, YourClsBase):
             pass
-
-
-    TWO WAYS TO SEPARATE GROUPS
-    NOTE: BEST WAY: use only MIDDLE_GROUP__CMP_ATTR and *_NAME useful for issues when you need to know exactly the group name!
-    but you could forget using MIDDLE_GROUP__CMP_ATTR and exists incorrect cases.
-
-    1. NAME/str attribute as base (always checks first) - MIDDLE_GROUP__NAME
-        class Group1(ClsMiddleGroup):
-            MIDDLE_GROUP__NAME = "Group1"
-            def meth(self):
-                pass
-
-        class Group2(ClsMiddleGroup):
-            MIDDLE_GROUP__NAME = "Group2"
-            def meth(self):
-                return True
-
-    2. by other methods in addition - MIDDLE_GROUP__CMP_ATTR
-        class GroupBase(ClsMiddleGroup):
-            MIDDLE_GROUP__CMP_ATTR = "meth"
-            MIDDLE_GROUP__CMP_ATTR = ["meth", "meth2"]
-
-        class Group1(GroupBase):
-            def meth(self):
-                pass
-
-        class Group2(GroupBase):
-            def meth(self):
-                return True
     """
     MIDDLE_GROUP__NAME: None | str = None           # main cmp meth
     MIDDLE_GROUP__CMP_ATTR: TYPE__ARGS = None       # additional cmp parameters
@@ -169,6 +166,10 @@ class ClsMiddleGroup:
             return
 
         other = ensure_class(other)
+
+        # in case of used only empty base MiddleGroup and no any Group configured!
+        if cls.MIDDLE_GROUP__NAME == other.MIDDLE_GROUP__NAME == cls.MIDDLE_GROUP__CMP_ATTR == other.MIDDLE_GROUP__CMP_ATTR is None:
+            return False
 
         # CMP not only by just one name!!! need cmp by equity special methods!
         if cls.MIDDLE_GROUP__NAME != other.MIDDLE_GROUP__NAME:
