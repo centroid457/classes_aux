@@ -63,7 +63,7 @@ class PROJECT(PROJECT_BASE):
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: tuple[int, int, int] = (0, 1, 8)
+    VERSION: tuple[int, int, int] = (0, 1, 9)
     TODO: list[str] = [
         "..."
     ]
@@ -71,7 +71,7 @@ class PROJECT(PROJECT_BASE):
         "..."
     ]
     NEWS: list[str] = [
-        "[MiddleGroup] ref middle_group__check_equal",
+        "[MiddleGroup] ref middle_group__check_equal__cls +separate to *_cls/*_inst",
     ]
 
 
