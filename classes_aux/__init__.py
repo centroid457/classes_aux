@@ -33,7 +33,7 @@ from .number import (
     # EXX
     Exx__NumberArithm_NoName,
 )
-from .getattr import (
+from .getattr_prefix import (
     # BASE
     GetattrPrefixInst,
     GetattrPrefixInst_RaiseIf,

@@ -1,4 +1,4 @@
-# FIXME: need to deprecate! see next
+# FIXME: need to deprecate? no!
 
 from typing import *
 from object_info import *
