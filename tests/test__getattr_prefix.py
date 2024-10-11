@@ -1,10 +1,8 @@
 from typing import *
-import pathlib
 
 import pytest
 from pytest import mark
 from pytest_aux import *
-
 from classes_aux import *
 
 
@@ -35,7 +33,7 @@ class Victim(GetattrPrefixInst_RaiseIf):
     ]
 )
 def test___attr_name__get_original(args, _EXPECTED):
-    func_link = Victim()._attr_name__get_original
+    func_link = Victim._attr_anycase__get_name
     pytest_func_tester__no_kwargs(func_link, args, _EXPECTED)
 
 

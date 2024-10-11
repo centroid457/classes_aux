@@ -1,6 +1,8 @@
-import pathlib
 from typing import *
 from object_info import *
+from funcs_aux import *
+
+from .getattr_anycase import GetattrAux
 
 
 # =====================================================================================================================
@@ -13,28 +15,17 @@ class Exx__GetattrPrefix_RaiseIf(Exx__GetattrPrefix):
 
 
 # =====================================================================================================================
-class GetattrPrefixInst:
+class GetattrPrefixInst(GetattrAux):
     # SETTINGS ----------------------
     _GETATTR__EXX: Type[Exx__GetattrPrefix] = Exx__GetattrPrefix
     _GETATTR__PREFIXES_INST: list[str] = []
 
-    # BASE --------------------------
-    def _attr_name__get_original(self, sample: str | None) -> str | None:
-        """
-        get attr name in original register
-        """
-        if not isinstance(sample, str):
-            return
-        for name in dir(self):
-            if name.lower() == sample.lower():
-                return name
-
-    def __getattr__(self, item: str):
+    def __getattr__(self, item: str) -> Any | NoReturn:
         for prefix in self._GETATTR__PREFIXES_INST:
             if item.lower().startswith(prefix.lower()):
                 item = item[len(prefix):]
 
-                name_original = self._attr_name__get_original(item)
+                name_original = self._attr_anycase__get_value(item, self)
                 if name_original is None:
                     raise AttributeError(item)
 
@@ -68,11 +59,8 @@ class GetattrPrefixInst_RaiseIf(GetattrPrefixInst):
 
         _reverse = _reverse or False
         meth = getattr(self, meth_name)
-        if TypeChecker.check__callable_func_meth_inst(meth):
-            result = meth(*args, **kwargs)
-        else:
-            result = meth
-        if bool(result) != bool(_reverse):
+        result = ValidAux.get_result_or_exx(source=meth, args=args, kwargs=kwargs)
+        if TypeChecker.check__exception(result) or bool(result) != bool(_reverse):
             raise self._GETATTR__EXX(f"[raise_if__]met conditions {meth_name=}/{args=}/{kwargs=}//{_comment=}")
 
     def raise_if_not__(self, meth_name: str, args: tuple | None = None, kwargs: dict | None = None) -> None | NoReturn:

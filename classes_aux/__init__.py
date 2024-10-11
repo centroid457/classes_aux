@@ -33,6 +33,21 @@ from .number import (
     # EXX
     Exx__NumberArithm_NoName,
 )
+# ---------------------------------------------------------------------------------------------------------------------
+from .getattr_aux import (
+    # BASE
+    GetattrAux,
+    # AUX
+    # TYPES
+    # EXX
+)
+from .getattr_anycase import (
+    # BASE
+    GetattrAnycase,
+    # AUX
+    # TYPES
+    # EXX
+)
 from .getattr_prefix import (
     # BASE
     GetattrPrefixInst,
@@ -52,6 +67,7 @@ from .getattr_echo import (
     # TYPES
     # EXX
 )
+# ---------------------------------------------------------------------------------------------------------------------
 from .middle_group import (
     # BASE
     ClsMiddleGroup,
