@@ -33,14 +33,17 @@ class GetattrPrefixInst(GetattrAux):
             prefix_meth = getattr(self, prefix_original)
 
             if item.lower() == prefix.lower():
-                return lambda *args, **kwargs: ValidAux.get_result(source=prefix_meth, args=args, kwargs=kwargs)
+                return lambda *prefix_args, **prefix_kwargs: ValidAux.get_result(source=prefix_meth, args=prefix_args, kwargs=prefix_kwargs)
 
             if prefix_original and item.lower().startswith(prefix.lower()):
                 item = item[len(prefix):]
                 item_value = self._attr_anycase__get_value(item, self)
 
-                return lambda *args, **kwargs: ValidAux.get_result(source=prefix_meth, args=[ValidAux.get_result(source=item_value, args=args, kwargs=kwargs), ])
-            # TODO: maybe need to add prefix_kwargs???? for _comments for example? but how...
+                return lambda *meth_args, **meth_kwargs: ValidAux.get_result(
+                    source=prefix_meth,
+                    args=[ValidAux.get_result(source=item_value, args=meth_args, kwargs={k:v for k,v in meth_kwargs.items() if k != "prefix_kwargs"}), ],
+                    kwargs=meth_kwargs.get("prefix_kwargs") or {}
+                )
 
         raise AttributeError(item)
 
@@ -60,13 +63,13 @@ class GetattrPrefixInst_RaiseIf(GetattrPrefixInst):
 
     # ---------------------------------------
     # if you need add some new - create same using this as template!
-    def raise_if__(self, source: Any, _reverse: bool | None = None) -> None | NoReturn:
+    def raise_if__(self, source: Any, _reverse: bool | None = None, comment: str = "") -> None | NoReturn:
         _reverse = _reverse or False
         result = ValidAux.get_result_or_exx(source=source)
         if TypeChecker.check__exception(result) or bool(result) != bool(_reverse):
-            raise Exx__GetattrPrefix_RaiseIf(f"[raise_if__{_reverse=}]met conditions {source=}")
+            raise Exx__GetattrPrefix_RaiseIf(f"[raise_if__/{_reverse=}]met conditions ({source=}/{comment=})")
 
-    def raise_if_not__(self, source: Any) -> None | NoReturn:
+    def raise_if_not__(self, source: Any, comment: str = "") -> None | NoReturn:
         return self.raise_if__(source=source, _reverse=True)
 
 

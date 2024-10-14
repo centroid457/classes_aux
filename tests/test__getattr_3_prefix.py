@@ -142,11 +142,11 @@ def test___meth__raise_if_not(args, _EXPECTED):
 
 
 # =====================================================================================================================
-@pytest.mark.skip
+# @pytest.mark.skip
 def test__comment():
     COMMENT_APPLYED = "COMMENT_APPLYED"
     try:
-        Victim().raise_if__METH(True, _comment=COMMENT_APPLYED)
+        Victim().raise_if__METH(True, prefix_kwargs={"comment": COMMENT_APPLYED})
     except Exx__GetattrPrefix_RaiseIf as exx:
         print(exx)
         # ObjectInfo(exx).print()
