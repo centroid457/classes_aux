@@ -56,17 +56,17 @@ from .getattr_2_anycase import (
     # TYPES
     # EXX
 )
-from .getattr_3_prefix import (
+from .getattr_3_prefix_1_inst import (
     # BASE
     GetattrPrefixInst,
     GetattrPrefixInst_RaiseIf,
     # AUX
-    GetattrPrefixCls_MetaTemplate,
     # TYPES
     # EXX
     Exx__GetattrPrefix,
     Exx__GetattrPrefix_RaiseIf,
 )
+from .getattr_3_prefix_2_cls import GetattrPrefixCls_MetaTemplate
 
 # ---------------------------------------------------------------------------------------------------------------------
 from .middle_group import (
