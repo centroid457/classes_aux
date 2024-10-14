@@ -11,6 +11,13 @@
 ********************************************************************************
 ## NEWS
 
+0.1.11 (2024/10/14 19:33:30)
+------------------------------
+- [GETATTR*] big ref!:  
+	- separate GetattrAnycase/Aux  
+	- [GetattrPrefixInst+RaiseIf] full ref  
+	- add prefix_kwargs  
+
 0.1.10 (2024/10/03 13:11:11)
 ------------------------------
 - [MiddleGroup] fix not configured empty groups  

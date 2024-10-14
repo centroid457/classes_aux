@@ -63,7 +63,7 @@ class PROJECT(PROJECT_BASE):
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: tuple[int, int, int] = (0, 1, 10)
+    VERSION: tuple[int, int, int] = (0, 1, 11)
     TODO: list[str] = [
         "..."
     ]
@@ -71,7 +71,11 @@ class PROJECT(PROJECT_BASE):
         "..."
     ]
     NEWS: list[str] = [
-        "[MiddleGroup] fix not configured empty groups",
+        ["[GETATTR*] big ref!",
+            "separate GetattrAnycase/Aux",
+            "[GetattrPrefixInst+RaiseIf] full ref",
+            'add prefix_kwargs'
+         ]
     ]
 
 
