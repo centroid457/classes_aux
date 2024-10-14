@@ -34,32 +34,7 @@ from .number import (
     Exx__NumberArithm_NoName,
 )
 # ---------------------------------------------------------------------------------------------------------------------
-from .getattr_aux import (
-    # BASE
-    GetattrAux,
-    # AUX
-    # TYPES
-    # EXX
-)
-from .getattr_anycase import (
-    # BASE
-    GetattrAnycase,
-    # AUX
-    # TYPES
-    # EXX
-)
-from .getattr_prefix import (
-    # BASE
-    GetattrPrefixInst,
-    GetattrPrefixInst_RaiseIf,
-    # AUX
-    GetattrCls_Meta__Template,
-    # TYPES
-    # EXX
-    Exx__GetattrPrefix,
-    Exx__GetattrPrefix_RaiseIf,
-)
-from .getattr_echo import (
+from .getattr_0_echo import (
     # BASE
     GetattrEcho,
     GetattrEchoSpace,
@@ -67,6 +42,32 @@ from .getattr_echo import (
     # TYPES
     # EXX
 )
+from .getattr_1_aux import (
+    # BASE
+    GetattrAux,
+    # AUX
+    # TYPES
+    # EXX
+)
+from .getattr_2_anycase import (
+    # BASE
+    GetattrAnycase,
+    # AUX
+    # TYPES
+    # EXX
+)
+from .getattr_3_prefix import (
+    # BASE
+    GetattrPrefixInst,
+    GetattrPrefixInst_RaiseIf,
+    # AUX
+    GetattrPrefixCls_MetaTemplate,
+    # TYPES
+    # EXX
+    Exx__GetattrPrefix,
+    Exx__GetattrPrefix_RaiseIf,
+)
+
 # ---------------------------------------------------------------------------------------------------------------------
 from .middle_group import (
     # BASE

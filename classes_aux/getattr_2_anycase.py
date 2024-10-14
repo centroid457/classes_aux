@@ -1,5 +1,5 @@
 from typing import *
-from .getattr_aux import GetattrAux
+from .getattr_1_aux import GetattrAux
 
 
 # =====================================================================================================================

@@ -2,7 +2,8 @@ from typing import *
 from object_info import *
 from funcs_aux import *
 
-from .getattr_anycase import GetattrAux
+from .getattr_1_aux import GetattrAux
+from funcs_aux.valid_aux import ValidAux
 
 
 # =====================================================================================================================
@@ -16,20 +17,29 @@ class Exx__GetattrPrefix_RaiseIf(Exx__GetattrPrefix):
 
 # =====================================================================================================================
 class GetattrPrefixInst(GetattrAux):
-    # SETTINGS ----------------------
-    _GETATTR__EXX: Type[Exx__GetattrPrefix] = Exx__GetattrPrefix
-    _GETATTR__PREFIXES_INST: list[str] = []
+    _GETATTR__PREFIXES: list[str] = []
 
-    def __getattr__(self, item: str) -> Any | NoReturn:
-        for prefix in self._GETATTR__PREFIXES_INST:
-            if item.lower().startswith(prefix.lower()):
+    def __getattr__(self, item: str) -> Any | Callable | NoReturn:
+        """
+        NOTE
+        ----
+        all args/kwargs goes for value! not for the prefix!
+        prefix - callable with just one first parameter as katching value (may be callable) and other params used directly only for prefix
+        """
+        for prefix in self._GETATTR__PREFIXES:
+            prefix_original = self._attr_anycase__get_name(prefix, self)
+            if not prefix_original:
+                continue
+            prefix_meth = getattr(self, prefix_original)
+
+            if item.lower() == prefix.lower():
+                return lambda *args, **kwargs: ValidAux.get_result(source=prefix_meth, args=args, kwargs=kwargs)
+
+            if prefix_original and item.lower().startswith(prefix.lower()):
                 item = item[len(prefix):]
+                item_value = self._attr_anycase__get_value(item, self)
 
-                name_original = self._attr_anycase__get_value(item, self)
-                if name_original is None:
-                    raise AttributeError(item)
-
-                return lambda *args, **kwargs: getattr(self, prefix)(meth_name=name_original, args=args, kwargs=kwargs)
+                return lambda *args, **kwargs: ValidAux.get_result(source=prefix_meth, args=[ValidAux.get_result(source=item_value, args=args, kwargs=kwargs), ])
 
         raise AttributeError(item)
 
@@ -45,8 +55,7 @@ class GetattrPrefixInst_RaiseIf(GetattrPrefixInst):
         1. you should use MARKERS in same register as corresponding methods!
         2. but apply on instance in any variant!
     """
-    _GETATTR__EXX = Exx__GetattrPrefix_RaiseIf
-    _GETATTR__PREFIXES_INST = ["raise_if__", "raise_if_not__"]
+    _GETATTR__PREFIXES = ["raise_if__", "raise_if_not__"]
 
     # ---------------------------------------
     # if you need add some new - create same using this as template!
@@ -61,14 +70,14 @@ class GetattrPrefixInst_RaiseIf(GetattrPrefixInst):
         meth = getattr(self, meth_name)
         result = ValidAux.get_result_or_exx(source=meth, args=args, kwargs=kwargs)
         if TypeChecker.check__exception(result) or bool(result) != bool(_reverse):
-            raise self._GETATTR__EXX(f"[raise_if__]met conditions {meth_name=}/{args=}/{kwargs=}//{_comment=}")
+            raise Exx__GetattrPrefix_RaiseIf(f"[raise_if__]met conditions {meth_name=}/{args=}/{kwargs=}//{_comment=}")
 
     def raise_if_not__(self, meth_name: str, args: tuple | None = None, kwargs: dict | None = None) -> None | NoReturn:
         return self.raise_if__(meth_name=meth_name, args=args, kwargs=kwargs, _reverse=True)
 
 
 # =====================================================================================================================
-class GetattrCls_Meta__Template(type):
+class GetattrPrefixCls_MetaTemplate(type):
     """
     NOTE
     ----

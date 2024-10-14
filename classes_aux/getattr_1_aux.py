@@ -22,9 +22,10 @@ class GetattrAux:
                 return name
 
     @classmethod
-    def _attr_anycase__get_value(cls, item: str, obj: Any) -> Any | NoReturn:
+    def _attr_anycase__get_value(cls, item: str, obj: Any) -> Any | Callable | NoReturn:
         """
         get attr value by name in any register
+        no execution! return pure value as represented in object!
         """
         name_original = cls._attr_anycase__get_name(item, obj)
         if name_original is None:
