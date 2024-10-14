@@ -67,7 +67,7 @@ def test__direct():
 
     ]
 )
-def test__1(meth, args, _EXPECTED):
+def test__batch(meth, args, _EXPECTED):
     func = lambda *_args: getattr(victim, meth)(*_args)
     pytest_func_tester__no_kwargs(func, args, _EXPECTED)
 

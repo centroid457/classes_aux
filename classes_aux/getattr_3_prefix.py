@@ -24,7 +24,7 @@ class GetattrPrefixInst(GetattrAux):
         NOTE
         ----
         all args/kwargs goes for value! not for the prefix!
-        prefix - callable with just one first parameter as katching value (may be callable) and other params used directly only for prefix
+        prefix - callable with just one first parameter as catching value (may be callable) and other params used directly only for prefix
         """
         for prefix in self._GETATTR__PREFIXES:
             prefix_original = self._attr_anycase__get_name(prefix, self)
@@ -40,6 +40,7 @@ class GetattrPrefixInst(GetattrAux):
                 item_value = self._attr_anycase__get_value(item, self)
 
                 return lambda *args, **kwargs: ValidAux.get_result(source=prefix_meth, args=[ValidAux.get_result(source=item_value, args=args, kwargs=kwargs), ])
+            # TODO: maybe need to add prefix_kwargs???? for _comments for example? but how...
 
         raise AttributeError(item)
 
@@ -59,21 +60,14 @@ class GetattrPrefixInst_RaiseIf(GetattrPrefixInst):
 
     # ---------------------------------------
     # if you need add some new - create same using this as template!
-    def raise_if__(self, meth_name: str, args: tuple | None = None, kwargs: dict | None = None, _reverse: bool | None = None) -> None | NoReturn:
-        args = args or ()
-        kwargs = kwargs or {}
-        _comment = None
-        if "_comment" in kwargs:
-            _comment = kwargs.pop("_comment")
-
+    def raise_if__(self, source: Any, _reverse: bool | None = None) -> None | NoReturn:
         _reverse = _reverse or False
-        meth = getattr(self, meth_name)
-        result = ValidAux.get_result_or_exx(source=meth, args=args, kwargs=kwargs)
+        result = ValidAux.get_result_or_exx(source=source)
         if TypeChecker.check__exception(result) or bool(result) != bool(_reverse):
-            raise Exx__GetattrPrefix_RaiseIf(f"[raise_if__]met conditions {meth_name=}/{args=}/{kwargs=}//{_comment=}")
+            raise Exx__GetattrPrefix_RaiseIf(f"[raise_if__{_reverse=}]met conditions {source=}")
 
-    def raise_if_not__(self, meth_name: str, args: tuple | None = None, kwargs: dict | None = None) -> None | NoReturn:
-        return self.raise_if__(meth_name=meth_name, args=args, kwargs=kwargs, _reverse=True)
+    def raise_if_not__(self, source: Any) -> None | NoReturn:
+        return self.raise_if__(source=source, _reverse=True)
 
 
 # =====================================================================================================================
@@ -96,6 +90,8 @@ class GetattrPrefixCls_MetaTemplate(type):
     for example usages see requirements_checker.ReqCheckStr_Base, annot_attrs. or here _GetattrCls_Meta__Echo
 
     """
+
+    # TODO: add tests!
     # dont change markers! use exists!
     _MARKER__BOOL_IF: str = "bool_if__"
     _MARKER__BOOL_IF_NOT: str = "bool_if_not__"

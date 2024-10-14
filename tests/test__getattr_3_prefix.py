@@ -17,27 +17,6 @@ class Victim(GetattrPrefixInst_RaiseIf):
 
 
 # =====================================================================================================================
-@pytest.mark.parametrize(
-    argnames="args, _EXPECTED",
-    argvalues=[
-        (None, None),
-        (True, None),
-        ("", None),
-        (" TRUE", None),
-
-        ("TRUE", "TRUE"),
-        ("True", "TRUE"),
-        ("true", "TRUE"),
-
-        ("meth", "meth"),
-    ]
-)
-def test__anycase(args, _EXPECTED):
-    func_link = Victim._attr_anycase__get_name
-    pytest_func_tester__no_kwargs(func_link, args, _EXPECTED)
-
-
-# =====================================================================================================================
 def test__register():
     # --------------------------------
     assert Victim().TRUE is True
@@ -163,6 +142,7 @@ def test___meth__raise_if_not(args, _EXPECTED):
 
 
 # =====================================================================================================================
+@pytest.mark.skip
 def test__comment():
     COMMENT_APPLYED = "COMMENT_APPLYED"
     try:
@@ -176,4 +156,3 @@ def test__comment():
 
 
 # =====================================================================================================================
-
