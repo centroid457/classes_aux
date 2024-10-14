@@ -32,7 +32,7 @@ class Victim(GetattrPrefixInst_RaiseIf):
         ("meth", "meth"),
     ]
 )
-def test__anycasel(args, _EXPECTED):
+def test__anycase(args, _EXPECTED):
     func_link = Victim._attr_anycase__get_name
     pytest_func_tester__no_kwargs(func_link, args, _EXPECTED)
 

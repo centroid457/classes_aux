@@ -45,6 +45,7 @@ def test__direct():
     assert victim.bool__meth_echo(False) == False
 
 
+# ---------------------------------------------------------------------------------------------------------------------
 @pytest.mark.parametrize(
     argnames="meth, args, _EXPECTED",
     argvalues=[
