@@ -146,7 +146,7 @@ def test___meth__raise_if_not(args, _EXPECTED):
 def test__comment():
     COMMENT_APPLYED = "COMMENT_APPLYED"
     try:
-        Victim().raise_if__METH(True, prefix_kwargs={"comment": COMMENT_APPLYED})
+        Victim().raise_if__METH(True, COMMENT=COMMENT_APPLYED)
     except Exx__GetattrPrefix_RaiseIf as exx:
         print(exx)
         # ObjectInfo(exx).print()
