@@ -19,10 +19,8 @@ class GetattrPrefixCls_MetaTemplate(type):
     BEST USAGE
     ----------
     for example usages see requirements_checker.ReqCheckStr_Base, annot_attrs. or here _GetattrCls_Meta__Echo
-
     """
-
-    # TODO: add tests!
+    # TODO: add example! + tests! +REF!
     # dont change markers! use exists!
     _MARKER__BOOL_IF: str = "bool_if__"
     _MARKER__BOOL_IF_NOT: str = "bool_if_not__"
