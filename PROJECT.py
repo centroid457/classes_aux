@@ -63,7 +63,7 @@ class PROJECT(PROJECT_BASE):
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: tuple[int, int, int] = (0, 1, 11)
+    VERSION: tuple[int, int, int] = (0, 1, 12)
     TODO: list[str] = [
         "..."
     ]
@@ -71,11 +71,7 @@ class PROJECT(PROJECT_BASE):
         "..."
     ]
     NEWS: list[str] = [
-        ["[GETATTR*] big ref!",
-            "separate GetattrAnycase/Aux",
-            "[GetattrPrefixInst+RaiseIf] full ref",
-            'add prefix_kwargs'
-         ]
+        "[GetattrPrefixInst] change sharing params between callable prefix/item over UPPERCASE",
     ]
 
 
