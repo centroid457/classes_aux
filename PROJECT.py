@@ -63,7 +63,7 @@ class PROJECT(PROJECT_BASE):
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: tuple[int, int, int] = (0, 1, 12)
+    VERSION: tuple[int, int, int] = (0, 1, 13)
     TODO: list[str] = [
         "..."
     ]
@@ -71,7 +71,7 @@ class PROJECT(PROJECT_BASE):
         "..."
     ]
     NEWS: list[str] = [
-        "[GetattrPrefixInst] change sharing params between callable prefix/item over UPPERCASE",
+        "just zero update",
     ]
 
 
